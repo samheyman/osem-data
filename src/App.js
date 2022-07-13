@@ -6,9 +6,9 @@ import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
 
 const width = 900;
-const height = 500;
-const margin = { top: 20, right: 30, bottom: 65, left: 220 };
-const xAxisLabelOffset = 50;
+const height = 600;
+const margin = { top: 20, right: 30, bottom: 95, left: 220 };
+const xAxisLabelOffset = 80;
 
 function App() {
   const data = useData();
@@ -16,7 +16,6 @@ function App() {
     return <pre>... loading ...</pre>;
   }
 
-  console.log(data[0]);
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
@@ -26,9 +25,8 @@ function App() {
   const xAxisTickFormat = (tickValue) => siFormat(tickValue).replace("G", "B");
 
   const yScale = scaleBand()
-    .domain([data.map(yValue)])
-    .range([0, innerWidth])
-    // space between bars
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
     .padding(0.15);
 
   const xScale = scaleLinear()

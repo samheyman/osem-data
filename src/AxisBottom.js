@@ -1,4 +1,4 @@
-export const AxisBottom = ({ xScale, innerHeight, tickFormat }) => {
+export const AxisBottom = ({ xScale, innerHeight, tickFormat }) =>
   xScale.ticks().map((tickValue) => (
     <g
       className="tick"
@@ -11,4 +11,3 @@ export const AxisBottom = ({ xScale, innerHeight, tickFormat }) => {
       </text>
     </g>
   ));
-};
