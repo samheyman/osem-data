@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import { csv, arc, pie, scaleBand, scaleLinear, max, format } from "d3";
 import { useData } from "./hooks/useData";
+import { Header } from "./Header";
 import { Marks } from "./Marks";
 import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
@@ -64,60 +65,71 @@ function App() {
 
   return (
     <div className="App">
-      <h1>OSEM dashboard</h1>
-      <form className="date-selector">
-        <span>Month </span>
-        <select name="month" id="month" onChange={updateDate} value={date}>
-          {monthList.map((month) => (
-            <option
-              key={month}
-              // type="radio"
-              // id={month}
-              // name="month"
-
-              // checked={date === month}
-              value={month}
+      <Header />
+      <div className="form-container flex flex-row">
+        <label for="standard-select">Select month</label>
+        {/* <form className="date-selector"> */}
+        <div className="select">
+          <select
+            id="standard-select"
+            name="month"
+            onChange={updateDate}
+            value={date}
+          >
+            {monthList.map((month) => (
+              <option key={month} value={month}>
+                {month} 2022
+              </option>
+            ))}
+          </select>
+        </div>
+        {/* </form> */}
+      </div>
+      <h1>OSEM data</h1>
+      <p className="ff-heading fw-400">
+        Based on data from{" "}
+        <span className="fw-700">Performance environment</span>.
+      </p>
+      <p className="last-updated ff-heading fw-400">
+        LAST UPDATED JULY 14, 2022
+      </p>
+      <div className="chart">
+        {" "}
+        <svg width={width} height={height}>
+          <g transform={`translate(${margin.left},${margin.top})`}>
+            <AxisBottom
+              xScale={xScale}
+              innerHeight={innerHeight}
+              tickFormat={xAxisTickFormat}
+            />
+            <AxisLeft yScale={yScale} />
+            <text
+              className="axis-label"
+              x={innerWidth / 2}
+              y={innerHeight + xAxisLabelOffset}
+              textAnchor="middle"
             >
-              {month} 2022
-            </option>
-          ))}
-        </select>
-        <br />
-      </form>
-      <svg width={width} height={height}>
-        <g transform={`translate(${margin.left},${margin.top})`}>
-          <AxisBottom
-            xScale={xScale}
-            innerHeight={innerHeight}
-            tickFormat={xAxisTickFormat}
-          />
-          <AxisLeft yScale={yScale} />
-          <text
-            className="axis-label"
-            x={innerWidth / 2}
-            y={innerHeight + xAxisLabelOffset}
-            textAnchor="middle"
-          >
-            Number of users
-          </text>
-          <text
-            className="axis-label-note"
-            x={innerWidth / 2}
-            y={innerHeight + xAxisLabelOffset + 20}
-            textAnchor="middle"
-          >
-            Number of users by project, based on data from performance env.
-          </text>
-          <Marks
-            data={data}
-            xScale={xScale}
-            yScale={yScale}
-            xValue={xValue}
-            yValue={yValue}
-            tooltipFormat={xAxisTickFormat}
-          />
-        </g>
-      </svg>
+              Number of users
+            </text>
+            <text
+              className="axis-label-note"
+              x={innerWidth / 2}
+              y={innerHeight + xAxisLabelOffset + 20}
+              textAnchor="middle"
+            >
+              Number of users by project, based on data from performance env.
+            </text>
+            <Marks
+              data={data}
+              xScale={xScale}
+              yScale={yScale}
+              xValue={xValue}
+              yValue={yValue}
+              tooltipFormat={xAxisTickFormat}
+            />
+          </g>
+        </svg>
+      </div>
     </div>
   );
 }
