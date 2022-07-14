@@ -67,7 +67,8 @@ function App() {
     <div className="App">
       <Header />
       <div className="form-container flex flex-row">
-        <label for="standard-select">Select month</label>
+        <label htmlFor="standard-select">Select month</label>
+        <br />
         {/* <form className="date-selector"> */}
         <div className="select">
           <select
@@ -76,11 +77,21 @@ function App() {
             onChange={updateDate}
             value={date}
           >
-            {monthList.map((month) => (
-              <option key={month} value={month}>
-                {month} 2022
+            {monthList.map((month, i) => (
+              <option key={i} value={month}>
+                {month}
               </option>
             ))}
+          </select>
+        </div>
+        <div className="select">
+          <select
+            id="standard-select"
+            name="year"
+            onChange={updateDate}
+            value="2022"
+          >
+            <option value="2022">2022</option>
           </select>
         </div>
         {/* </form> */}

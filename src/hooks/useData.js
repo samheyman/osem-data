@@ -7,11 +7,8 @@ import csvData from "../data/data.csv";
 
 export const useData = (date) => {
   const [data, setData] = React.useState(null);
-  console.log(date);
   React.useEffect(() => {
     const row = (d) => {
-      console.log();
-
       d.Users = +d[date];
       return d;
     };

@@ -6,11 +6,11 @@ export const Marks = ({
   yValue,
   tooltipFormat,
 }) =>
-  data.map((d) => {
+  data.map((d, i) => {
     return (
       <rect
         className="mark"
-        key={yValue(d)}
+        key={i}
         x={0}
         y={yScale(yValue(d))}
         width={xScale(xValue(d))}

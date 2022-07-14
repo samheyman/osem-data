@@ -1,8 +1,8 @@
 export const AxisLeft = ({ yScale }) =>
-  yScale.domain().map((tickValue) => (
+  yScale.domain().map((tickValue, i) => (
     <g className="tick">
       <text
-        key={tickValue}
+        key={i}
         style={{ textAnchor: "end" }}
         x={-3}
         dy=".32em"

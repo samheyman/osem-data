@@ -122,7 +122,8 @@ pre {
 
 .mark {
   /* https://sunlightfoundation.com/2014/03/12/datavizguide/ */
-  fill: #137b80;
+  /* fill: #137b80; */
+  fill: #2786b4;
 }
 
 .axis-label {
@@ -139,6 +140,11 @@ pre {
 
 .form-container {
   margin-top: 20px;
+  align-items: center;
+}
+
+.form-container label {
+  padding-right: 10px;
 }
 
 .date-selector {
@@ -146,7 +152,7 @@ pre {
   float: right;
   font-family: var(--ff-heading);
 }
-
+/* 
 .date-selector span {
   padding-right: 7px;
 }
@@ -155,7 +161,7 @@ pre {
   margin-right: 10px;
   padding-left: 5px;
   text-transform: capitalize;
-}
+} */
 
 .last-updated {
   color: rgb(113, 115, 117);
@@ -249,8 +255,8 @@ select {
   grid-template-areas: "select";
   align-items: center;
   position: relative;
-
-  min-width: 15ch;
+  margin: 0 5px;
+  min-width: 7ch;
   max-width: 30ch;
 
   border: 1px solid var(--select-border);
