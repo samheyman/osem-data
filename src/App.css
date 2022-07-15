@@ -27,8 +27,13 @@
 .App {
   text-align: center;
   /* border: 1px solid grey; */
-  /* width: 900px; */
-  margin: 0 auto;
+  width: 960px;
+  max-width: min(100%, 960px);
+  margin: 0 auto 40px;
+  overflow-x: auto;
+}
+
+@media (min-width: 960px) {
 }
 
 .App-logo {
@@ -90,7 +95,7 @@ nav a span {
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: var(--ff-secondary);
 }
 
@@ -105,11 +110,26 @@ h5 {
 
 h1 {
   font-size: 64px;
-  margin: 20px 0 30px;
+  margin: 4rem 0 3rem;
+}
+
+h2 {
+  margin: 4rem 0 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+h2::after {
+  display: block;
+  content: "";
+  background: #666666;
+  height: 3px;
+  width: 100px;
+  margin: 10px auto 2rem;
 }
 
 pre {
-  font-size: 7em;
+  font-size: 1.125rem;
 }
 
 .tick line {
@@ -171,7 +191,38 @@ pre {
 
 .chart {
   margin-top: 40px;
-  transform: translate(-110px, 0);
+  transform: translate(-40px, 0);
+}
+
+.globe {
+  margin: 0 auto;
+}
+
+.globe__land {
+  /* fill: rgb(239, 239, 239); */
+  fill: #e0e0e0;
+  /* fill: hsl(0, 0%, 71%, 0.61); */
+  /* stroke: rgb(204, 204, 204); */
+}
+.globe__projects {
+  /* fill: rgb(239, 239, 239); */
+  fill: #2786b4;
+  /* stroke: rgb(204, 204, 204); */
+}
+.globe__sphere {
+  fill: hsla(0, 0%, 93%, 0.01);
+  /* fill: #ececec; */
+  /* fill: rgb(215, 215, 236); */
+  /* stroke: red; */
+}
+
+.globe__interiors {
+  fill: none;
+  stroke: hsl(0, 0%, 80%);
+}
+.globe__graticules {
+  fill: none;
+  stroke: hsl(0, 0%, 92%);
 }
 
 /* Utility classes */
