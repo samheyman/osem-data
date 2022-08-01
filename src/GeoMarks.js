@@ -15,7 +15,11 @@ export const GeoMarks = ({ data: { land, interiors }, projects }) => (
 
     <path className="globe__interiors" d={path(interiors)} />
     {projects.map((d) => {
+      if (d.lng === 0 || d.lat === 0) {
+        return;
+      }
       const [x, y] = projection([d.lng, d.lat]);
+
       return <circle className="globe__projects" cx={x} cy={y} r={3} />;
     })}
   </g>

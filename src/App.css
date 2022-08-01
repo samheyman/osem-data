@@ -97,6 +97,7 @@ body {
   padding: 0;
   /* overflow: hidden; */
   font-family: var(--ff-secondary);
+  color: rgb(33, 37, 41);
 }
 
 h1,
@@ -114,7 +115,7 @@ h1 {
 }
 
 h2 {
-  margin: 4rem 0 2rem;
+  margin: 6rem 0 2rem;
   font-weight: 600;
   font-size: 2rem;
 }
@@ -364,4 +365,53 @@ label {
 
 .select + label {
   margin-top: 2rem;
+}
+
+.capacity {
+  width: 100%;
+  color: #212529;
+  font-family: var(--ff-heading);
+  border-collapse: collapse;
+}
+.capacity thead td {
+  font-weight: 600;
+}
+.capacity tr {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+.capacity td {
+  text-align: center;
+  font-size: 1.1rem !important;
+  max-width: 50%;
+  padding: 1rem;
+}
+
+.key-numbers {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  margin: 3rem 0;
+}
+
+.key-numbers div {
+  width: 100%;
+}
+
+.key-numbers__value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--ff-heading);
+}
+
+.key-numbers__value {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: var(--ff-heading);
+  color: #2786b4;
+}
+.key-numbers__value span {
+  color: rgb(33, 37, 41);
+  font-weight: 500;
+  font-size: 1.5rem;
 }

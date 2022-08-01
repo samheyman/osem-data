@@ -6,8 +6,10 @@ const row = (d) => {
   d.lat = +d.lat;
   d.lng = +d.lng;
   d.name = d["Project name"];
-  d.name = d.ProjectID;
-  d.name = d.turbines;
+  d.projectID = d["Project ID"];
+  d.turbines = +d.turbines;
+  d.turbineCapacityMW = +d["turbine capactiy MW"];
+  d.totalCapacityMW = +d["total capacity MW"];
   return d;
 };
 export const useProjectsData = () => {

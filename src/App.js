@@ -22,12 +22,12 @@ const monthList = [
   "apr",
   "may",
   "jun",
-  "jul",
-  "aug",
-  "sep",
-  "oct",
-  "nov",
-  "dec",
+  // "jul",
+  // "aug",
+  // "sep",
+  // "oct",
+  // "nov",
+  // "dec",
 ];
 
 const getMonthName = (date) => {
@@ -37,7 +37,8 @@ const getPreviousMonth = (month) => monthList[monthList.indexOf(month) - 1];
 
 function App() {
   const [date, setDate] = React.useState(
-    getPreviousMonth(getMonthName(new Date()))
+    "jun"
+    // getPreviousMonth(getMonthName(new Date()))
   );
   let data = useData(date);
   let geoData = useGeoData();
@@ -68,6 +69,20 @@ function App() {
     .domain([0, max(data, xValue)])
     .range([0, innerWidth]);
 
+  const totalOsemCapacity = projectsData.reduce(
+    (totalSum, a) => totalSum + a.totalCapacityMW,
+    0
+  );
+  const totalNumberOfTurbines = projectsData.reduce(
+    (partialSum, a) => partialSum + a.turbines,
+    0
+  );
+
+  const numberOfActiveProjects = projectsData.reduce(
+    (partialSum, a) => (a.status === "active" ? partialSum + 1 : partialSum),
+    0
+  );
+
   return (
     <>
       <Header />
@@ -79,9 +94,9 @@ function App() {
           <span className="fw-700">Performance environment</span>.
         </p>
         <p className="last-updated ff-heading fw-400">
-          LAST UPDATED JULY 14, 2022
+          LAST UPDATED AUG 1, 2022
         </p>
-        <h2>Projects</h2>
+        <h2>Project locations</h2>
         <div className="">
           {geoData && geoData.land ? (
             <svg width={width} height={height} className="globe">
@@ -91,11 +106,64 @@ function App() {
             <pre>Loading...</pre>
           )}
         </div>
+        <h2>Key figures</h2>
+        <div className="key-numbers">
+          <div>
+            <div className="key-numbers__title">Number of projects</div>
+            <div className="key-numbers__value">{numberOfActiveProjects}</div>
+          </div>
+          <div>
+            <div className="key-numbers__title">Number of turbines</div>
+            <div className="key-numbers__value">{totalNumberOfTurbines}</div>
+          </div>
+          <div>
+            <div className="key-numbers__title">
+              Total wind project capacity
+            </div>
+            <div className="key-numbers__value">
+              {totalOsemCapacity / 1000}
+              <span>GW</span>
+            </div>
+          </div>
+        </div>
+        <h2>Project capacity</h2>
+        {/* <p>
+          Vissim's software is currently deployed and used across more than{" "}
+          <span>{totalOsemCapacity / 1000}</span>GW of wind project development
+          and operations in Europe and Asia.
+        </p> */}
+        {projectsData && (
+          <table className="capacity">
+            <thead>
+              <tr>
+                <td>Project name</td>
+                <td>Number of turbines</td>
+                {/* <td>Turbine capacity</td>
+                <td>Turbine type</td> */}
+                <td>Total capacity (MW)</td>
+              </tr>
+            </thead>
+            {projectsData
+              .sort((a, b) => (a.totalCapacityMW < b.totalCapacityMW ? 0 : -1))
+              .map((d) => {
+                if (d.totalCapacityMW > 0) {
+                  return (
+                    <tr>
+                      <td>{d.name}</td>
+                      <td>{d.turbines}</td>
+                      {/* <td>{d.turbineCapacityMW}</td>
+                      <td>{d.turbineType}</td> */}
+                      <td>{d.totalCapacityMW}</td>
+                    </tr>
+                  );
+                }
+              })}
+          </table>
+        )}{" "}
         <h2>Number of users</h2>
-        <div className="form-container flex flex-row">
+        {/* <div className="form-container flex flex-row">
           <label htmlFor="standard-select">Select month</label>
           <br />
-          {/* <form className="date-selector"> */}
           <div className="select">
             <select
               id="standard-select"
@@ -120,8 +188,7 @@ function App() {
               <option value="2022">2022</option>
             </select>
           </div>
-          {/* </form> */}
-        </div>
+        </div> */}
         <div className="chart">
           <svg width={width} height={height}>
             <g transform={`translate(${margin.left},${margin.top})`}>
@@ -131,7 +198,7 @@ function App() {
                 tickFormat={xAxisTickFormat}
               />
               <AxisLeft yScale={yScale} />
-              <text
+              {/* <text
                 className="axis-label"
                 x={innerWidth / 2 - 50}
                 y={innerHeight + xAxisLabelOffset}
@@ -146,7 +213,7 @@ function App() {
                 textAnchor="middle"
               >
                 Number of users by project, based on data from performance env.
-              </text>
+              </text> */}
               <Marks
                 data={data}
                 xScale={xScale}
@@ -157,7 +224,7 @@ function App() {
               />
             </g>
           </svg>
-        </div>
+        </div>{" "}
       </div>
     </>
   );
