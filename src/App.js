@@ -11,7 +11,7 @@ import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
 
 const width = 960;
-const height = 600;
+const height = 430;
 const margin = { top: 20, right: 30, bottom: 100, left: 220 };
 const xAxisLabelOffset = 70;
 
