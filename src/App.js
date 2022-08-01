@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import { csv, arc, pie, scaleBand, scaleLinear, max, format } from "d3";
-import { useData } from "./hooks/useData";
+import { useProjectUserData } from "./hooks/useProjectUserData";
 import { useProjectsData } from "./hooks/useProjectsData";
 import { useGeoData } from "./hooks/useGeoData";
 import { Header } from "./Header";
@@ -9,6 +9,7 @@ import { Marks } from "./Marks";
 import { GeoMarks } from "./GeoMarks";
 import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
+import { animateValue, linear } from "./utils";
 
 const width = 960;
 const height = 430;
@@ -40,16 +41,28 @@ function App() {
     "jun"
     // getPreviousMonth(getMonthName(new Date()))
   );
-  let data = useData(date);
+  const [numberOfUsers, setNumberOfUsers] = React.useState(0);
+
+  let projectUserData = useProjectUserData(date);
   let geoData = useGeoData();
   let projectsData = useProjectsData();
 
   const updateDate = (e) => {
     setDate(e.target.value);
   };
-  if (!data || !geoData || !projectsData) {
+
+  // React.useEffect(() => {
+  //   animateValue("numberOfUsers", 0, totalNumberOfUsers, linear);
+  // }, []);
+
+  if (!projectUserData || !geoData || !projectsData) {
     return <pre>... loading ...</pre>;
   }
+  const totalNumberOfUsers = projectUserData.reduce(
+    (partialSum, a) => partialSum + a.Users,
+    0
+  );
+  // animateValue("numberOfUsers", 0, 12000, 1, linear);
 
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
@@ -61,27 +74,25 @@ function App() {
   const xAxisTickFormat = (tickValue) => tickValue;
 
   const yScale = scaleBand()
-    .domain(data.map(yValue))
+    .domain(projectUserData.map(yValue))
     .range([0, innerHeight])
     .padding(0.15);
 
   const xScale = scaleLinear()
-    .domain([0, max(data, xValue)])
+    .domain([0, max(projectUserData, xValue)])
     .range([0, innerWidth]);
 
   const totalOsemCapacity = projectsData.reduce(
     (totalSum, a) => totalSum + a.totalCapacityMW,
     0
   );
+
   const totalNumberOfTurbines = projectsData.reduce(
     (partialSum, a) => partialSum + a.turbines,
     0
   );
 
-  const numberOfActiveProjects = projectsData.reduce(
-    (partialSum, a) => (a.status === "active" ? partialSum + 1 : partialSum),
-    0
-  );
+  const numberOfActiveProjects = projectsData.length;
 
   return (
     <>
@@ -112,18 +123,25 @@ function App() {
             <div className="key-numbers__title">Number of projects</div>
             <div className="key-numbers__value">{numberOfActiveProjects}</div>
           </div>
+
           <div>
-            <div className="key-numbers__title">Number of turbines</div>
-            <div className="key-numbers__value">{totalNumberOfTurbines}</div>
+            <div className="key-numbers__title">Number of users</div>
+            <div className="key-numbers__value" id="numberOfUsers">
+              {totalNumberOfUsers}
+            </div>
           </div>
           <div>
             <div className="key-numbers__title">
               Total wind project capacity
             </div>
             <div className="key-numbers__value">
-              {totalOsemCapacity / 1000}
+              {Math.round((totalOsemCapacity / 1000) * 10) / 10}
               <span>GW</span>
             </div>
+          </div>
+          <div>
+            <div className="key-numbers__title">Number of turbines</div>
+            <div className="key-numbers__value">{totalNumberOfTurbines}</div>
           </div>
         </div>
         <h2>Project capacity</h2>
@@ -146,17 +164,17 @@ function App() {
             {projectsData
               .sort((a, b) => (a.totalCapacityMW < b.totalCapacityMW ? 0 : -1))
               .map((d) => {
-                if (d.totalCapacityMW > 0) {
-                  return (
-                    <tr>
-                      <td>{d.name}</td>
-                      <td>{d.turbines}</td>
-                      {/* <td>{d.turbineCapacityMW}</td>
+                // if (d.totalCapacityMW > 0) {
+                return (
+                  <tr>
+                    <td>{d.name}</td>
+                    <td>{d.turbines}</td>
+                    {/* <td>{d.turbineCapacityMW}</td>
                       <td>{d.turbineType}</td> */}
-                      <td>{d.totalCapacityMW}</td>
-                    </tr>
-                  );
-                }
+                    <td>{d.totalCapacityMW}</td>
+                  </tr>
+                );
+                // }
               })}
           </table>
         )}{" "}
@@ -215,7 +233,7 @@ function App() {
                 Number of users by project, based on data from performance env.
               </text> */}
               <Marks
-                data={data}
+                data={projectUserData}
                 xScale={xScale}
                 yScale={yScale}
                 xValue={xValue}

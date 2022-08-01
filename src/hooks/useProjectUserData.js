@@ -1,11 +1,11 @@
 import React from "react";
 import { csv } from "d3";
-import csvData from "../data/data.csv";
+import csvData from "../data/projectUsersData.csv";
 
 // const csvUrl =
 //   "https://gist.github.com/samheyman/0c455176c95ff0c7675592f4f7ecb761";
 
-export const useData = (date) => {
+export const useProjectUserData = (date) => {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     const row = (d) => {
@@ -18,7 +18,9 @@ export const useData = (date) => {
   }, [, date]);
 
   try {
-    return data.sort((a, b) => b.Users - a.Users);
+    return data
+      .filter((project) => project.status === "active")
+      .sort((a, b) => b.Users - a.Users);
   } catch (e) {
     console.error(e);
     return data;

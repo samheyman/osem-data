@@ -16,6 +16,5 @@ export const useGeoData = () => {
       });
     });
   }, []);
-  // console.log(data);
   return data;
 };

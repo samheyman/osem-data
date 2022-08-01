@@ -380,6 +380,12 @@ label {
   width: 100%;
   border-bottom: 1px solid #eee;
 }
+
+.capacity tr:hover {
+  cursor: pointer;
+  background-color: #eaeaea;
+}
+
 .capacity td {
   text-align: center;
   font-size: 1.1rem !important;
@@ -398,9 +404,9 @@ label {
   width: 100%;
 }
 
-.key-numbers__value {
+.key-numbers__title {
   font-size: 1.2rem;
-  font-weight: 700;
+  /* font-weight: 700; */
   font-family: var(--ff-heading);
 }
 
@@ -411,7 +417,7 @@ label {
   color: #2786b4;
 }
 .key-numbers__value span {
-  color: rgb(33, 37, 41);
-  font-weight: 500;
+  color: rgb(182, 182, 182);
+  font-weight: 600;
   font-size: 1.5rem;
 }

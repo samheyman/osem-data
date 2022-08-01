@@ -10,6 +10,7 @@ const row = (d) => {
   d.turbines = +d.turbines;
   d.turbineCapacityMW = +d["turbine capactiy MW"];
   d.totalCapacityMW = +d["total capacity MW"];
+  d.status = d.status;
   return d;
 };
 export const useProjectsData = () => {
@@ -19,8 +20,11 @@ export const useProjectsData = () => {
       setData(data);
     });
   }, []);
-  return data;
-
+  try {
+    return data.filter((project) => project.status === "active");
+  } catch (e) {
+    console.error(e);
+  }
   // try {
   //   return data.sort((a, b) => b.turbines - a.turbines);
   // } catch (e) {
