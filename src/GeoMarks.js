@@ -20,7 +20,16 @@ export const GeoMarks = ({ data: { land, interiors }, projects }) => (
       }
       const [x, y] = projection([d.lng, d.lat]);
 
-      return <circle className="globe__projects" cx={x} cy={y} r={3} />;
+      return (
+        <circle
+          className="globe__projects"
+          cx={x}
+          cy={y}
+          r={d.totalCapacityMW / 200}
+        >
+          <title>{`${d.name}\n(${d.totalCapacityMW}MW)`}</title>
+        </circle>
+      );
     })}
   </g>
 );

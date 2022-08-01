@@ -8,6 +8,8 @@
   --select-border: #777;
   --select-focus: blue;
   --select-arrow: var(--select-border);
+
+  --clr-blue: #2786b4;
 }
 /* https://piccalil.li/blog/a-modern-css-reset */
 
@@ -144,7 +146,7 @@ pre {
 .mark {
   /* https://sunlightfoundation.com/2014/03/12/datavizguide/ */
   /* fill: #137b80; */
-  fill: #2786b4;
+  fill: var(--clr-blue);
 }
 
 .axis-label {
@@ -195,8 +197,13 @@ pre {
   transform: translate(-40px, 0);
 }
 
+.globe__container {
+  overflow: hidden;
+}
+
 .globe {
   margin: 0 auto;
+  transform: translate(-195px, 143px) scale(1.8);
 }
 
 .globe__land {
@@ -207,7 +214,9 @@ pre {
 }
 .globe__projects {
   /* fill: rgb(239, 239, 239); */
-  fill: #2786b4;
+  /* fill: #2786b4; */
+  fill: transparent;
+  stroke: var(--clr-blue);
   /* stroke: rgb(204, 204, 204); */
 }
 .globe__sphere {

@@ -107,16 +107,6 @@ function App() {
         <p className="last-updated ff-heading fw-400">
           LAST UPDATED AUG 1, 2022
         </p>
-        <h2>Project locations</h2>
-        <div className="">
-          {geoData && geoData.land ? (
-            <svg width={width} height={height} className="globe">
-              <GeoMarks data={geoData} projects={projectsData} />
-            </svg>
-          ) : (
-            <pre>Loading...</pre>
-          )}
-        </div>
         <h2>Key figures</h2>
         <div className="key-numbers">
           <div>
@@ -143,6 +133,16 @@ function App() {
             <div className="key-numbers__title">Number of turbines</div>
             <div className="key-numbers__value">{totalNumberOfTurbines}</div>
           </div>
+        </div>
+        <h2>Project locations</h2>
+        <div className="globe__container">
+          {geoData && geoData.land ? (
+            <svg width={width} height={height} className="globe">
+              <GeoMarks data={geoData} projects={projectsData} />
+            </svg>
+          ) : (
+            <pre>Loading...</pre>
+          )}
         </div>
         <h2>Project capacity</h2>
         {/* <p>
