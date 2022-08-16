@@ -23,7 +23,7 @@ const monthList = [
   "apr",
   "may",
   "jun",
-  // "jul",
+  "jul",
   // "aug",
   // "sep",
   // "oct",
@@ -38,7 +38,7 @@ const getPreviousMonth = (month) => monthList[monthList.indexOf(month) - 1];
 
 function App() {
   const [date, setDate] = React.useState(
-    "jun"
+    "jul"
     // getPreviousMonth(getMonthName(new Date()))
   );
   const [numberOfUsers, setNumberOfUsers] = React.useState(0);
@@ -93,6 +93,9 @@ function App() {
   );
 
   const numberOfActiveProjects = projectsData.length;
+  const percentageChangeInUsers = Math.round(
+    ((totalNumberOfUsers - 11756) / 11756) * 100
+  );
 
   return (
     <>
@@ -105,8 +108,36 @@ function App() {
           <span className="fw-700">Performance environment</span>.
         </p>
         <p className="last-updated ff-heading fw-400">
-          LAST UPDATED AUG 1, 2022
+          LAST UPDATED AUG 16, 2022
         </p>
+        <div className="form-container flex flex-row">
+          <label htmlFor="standard-select">Select month</label>
+          <br />
+          <div className="select">
+            <select
+              id="standard-select"
+              name="month"
+              onChange={updateDate}
+              value={date}
+            >
+              {monthList.map((month, i) => (
+                <option key={i} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="select">
+            <select
+              id="standard-select"
+              name="year"
+              onChange={updateDate}
+              value="2022"
+            >
+              <option value="2022">2022</option>
+            </select>
+          </div>
+        </div>
         <h2>Key figures</h2>
         <div className="key-numbers">
           <div>
@@ -117,7 +148,11 @@ function App() {
           <div>
             <div className="key-numbers__title">Number of users</div>
             <div className="key-numbers__value" id="numberOfUsers">
-              {totalNumberOfUsers}
+              {totalNumberOfUsers}{" "}
+              <span>
+                {percentageChangeInUsers >= 0 ? "+" : "-"}
+                {percentageChangeInUsers}%*
+              </span>
             </div>
           </div>
           <div>
@@ -134,6 +169,7 @@ function App() {
             <div className="key-numbers__value">{totalNumberOfTurbines}</div>
           </div>
         </div>
+        <div>* since Jan 2022</div>
         <h2>Project locations</h2>
         <div className="globe__container">
           {geoData && geoData.land ? (
@@ -179,34 +215,6 @@ function App() {
           </table>
         )}{" "}
         <h2>Number of users</h2>
-        {/* <div className="form-container flex flex-row">
-          <label htmlFor="standard-select">Select month</label>
-          <br />
-          <div className="select">
-            <select
-              id="standard-select"
-              name="month"
-              onChange={updateDate}
-              value={date}
-            >
-              {monthList.map((month, i) => (
-                <option key={i} value={month}>
-                  {month}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="select">
-            <select
-              id="standard-select"
-              name="year"
-              onChange={updateDate}
-              value="2022"
-            >
-              <option value="2022">2022</option>
-            </select>
-          </div>
-        </div> */}
         <div className="chart">
           <svg width={width} height={height}>
             <g transform={`translate(${margin.left},${margin.top})`}>
