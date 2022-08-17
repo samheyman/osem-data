@@ -104,11 +104,10 @@ function App() {
       <div className="App">
         <h1>OSEM data</h1>
         <p className="ff-heading fw-400">
-          Based on data from{" "}
-          <span className="fw-700">Performance environment</span>.
+          Based on copy of <span className="fw-700">production data</span>.
         </p>
         <p className="last-updated ff-heading fw-400">
-          LAST UPDATED AUG 16, 2022
+          LAST UPDATED AUG 15, 2022
         </p>
         <div className="form-container flex flex-row">
           <label htmlFor="standard-select">Select month</label>
@@ -155,6 +154,11 @@ function App() {
               </span>
             </div>
           </div>
+
+          <div>
+            <div className="key-numbers__title">Number of turbines</div>
+            <div className="key-numbers__value">{totalNumberOfTurbines}</div>
+          </div>
           <div>
             <div className="key-numbers__title">
               Total wind project capacity
@@ -163,10 +167,6 @@ function App() {
               {Math.round((totalOsemCapacity / 1000) * 10) / 10}
               <span>GW</span>
             </div>
-          </div>
-          <div>
-            <div className="key-numbers__title">Number of turbines</div>
-            <div className="key-numbers__value">{totalNumberOfTurbines}</div>
           </div>
         </div>
         <div>* since Jan 2022</div>

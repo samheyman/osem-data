@@ -1,20 +1,20 @@
 Project name,projectID,lat,lng,status,turbines,turbine capactiy MW,total capacity MW
 Wikinger,3,54.874500,14.083667,active,79,5,350
-Gwynt y Mor,4,53.490150,-3.600483,active,160,3.6,576
+Gwynt y Mor,4,53.490150,-3.600483,active,160,3.6,660
 Scira,5,53.149000,1.181283,archived,90,0,0
 LID,6,53.151467,0.517467, archived,210,0,0
 London Array,7,51.590367,1.524033, archived,181,0,0
 Galloper,8,51.987683,1.971683,inactive,88,0,0
-Greater Gabbard,9,51.923700,1.987433,active,140,3.6,504
+Greater Gabbard,9,51.923700,1.987433,active,140,3.6,540
 Nordsee Ost,10,54.470833,7.640550,inactive,331,0,0
-BOWL,11,58.211450,-2.981217,active,90,7,588
+BOWL,11,58.211450,-2.981217,active,90,7,680
 Ormonde,12,54.087133,-3.461517, archived,356,0,0
 AOWF,13,57.223667,-2.012633, archived,13,0,0
 50Hz CWA2,14,0,0,active,0,0,0
 Rhyl Flats,18,53.391417,-3.653000,inactive,30,0,0
 Borsele 2,19,51.723150,2.953783, archived,130,0,0
 Fryslan,20,53.031467,5.261300,inactive,95,0,0
-Akita,21,39.753702,140.028703,active,34,4.2,140
+Akita,21,39.753702,140.028703,active,34,4.2,112
 St Brieuc,23,48.823500,-2.571434,active,62,8,496
 Seagreen,24,56.644979,-1.658597,active,114,10,1075
 Stowen,25,0,0,active,0,0,0
