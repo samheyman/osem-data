@@ -9,12 +9,12 @@ export const GeoMarks = ({ data: { land, interiors }, projects }) => (
     <path className="globe__sphere" d={path({ type: "Sphere" })} />
     <path className="globe__graticules" d={path(graticule())} />
 
-    {land.features.map((feature) => (
-      <path className="globe__land" d={path(feature)} />
+    {land.features.map((feature, id) => (
+      <path key={id} className="globe__land" d={path(feature)} />
     ))}
 
     <path className="globe__interiors" d={path(interiors)} />
-    {projects.map((d) => {
+    {projects.map((d, id) => {
       if (d.lng === 0 || d.lat === 0) {
         return;
       }
@@ -22,6 +22,7 @@ export const GeoMarks = ({ data: { land, interiors }, projects }) => (
 
       return (
         <circle
+          key={id}
           className="globe__projects"
           cx={x}
           cy={y}

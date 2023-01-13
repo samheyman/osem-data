@@ -1,21 +1,17 @@
 import React from "react";
 import { csv } from "d3";
-import csvData from "../data/projectsData.csv";
+import csvData from "../data/projectsLocations.csv";
 
 const row = (d) => {
+  d.name = d["Project name"];
+  d.projectID = d["Project ID"];
   d.lat = +d.lat;
   d.lng = +d.lng;
-  d.name = d["project name"];
-  d.projectID = d["project ID"];
-  d.turbines = +d.turbines;
-  d.turbineCapacityMW = +d["turbine capactiy MW"];
-  d.turbineCapacityCalcMW = +d.turbines * +d["turbine capactiy MW"];
   d.totalCapacityMW = +d["total capacity MW"];
-  d.status = d.status;
-  d.type = d.type;
+
   return d;
 };
-export const useProjectsData = () => {
+export const useProjectsLocationsData = () => {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     csv(csvData, row).then((data) => {
@@ -23,7 +19,7 @@ export const useProjectsData = () => {
     });
   }, []);
   try {
-    return data.filter((project) => project.status === "active");
+    return data;
   } catch (e) {
     // console.error(e);
   }
