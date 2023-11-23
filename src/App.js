@@ -62,7 +62,7 @@ function App() {
   let projectUsersData = useProjectUsersData();
   let projectPowerData = useProjectPowerData();
   let assetsData = useAssetsData(projectName);
-  let totalProjectGw = projectPowerData.
+  // console.log(projectPowerData);
 
   const updateDate = (e) => {
     setDate(e.target.value);
@@ -92,7 +92,10 @@ function App() {
     0
   );
   // animateValue("numberOfUsers", 0, 12000, 1, linear);
-
+  const totalProjectGw =
+    projectPowerData
+      .map((project) => project.Power)
+      .reduce((prev, next) => prev + next) / 1000;
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
