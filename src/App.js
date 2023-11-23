@@ -61,7 +61,7 @@ function App() {
   let historicalUsersData = useHistoricalUsersData("jul");
   let projectUsersData = useProjectUsersData();
   let projectPowerData = useProjectPowerData();
-  let assetsData = useAssetsData(projectName);
+  // let assetsData = useAssetsData(projectName);
   // console.log(projectPowerData);
 
   const updateDate = (e) => {
@@ -80,9 +80,9 @@ function App() {
     !worldMapData ||
     !projectsData ||
     !projectsLocationsData ||
-    !historicalUsersData ||
-    !assetsData ||
-    assetsData.value.length < 1
+    !historicalUsersData
+    // !assetsData ||
+    // assetsData.value.length < 1
   ) {
     return <pre>... loading ...</pre>;
   }

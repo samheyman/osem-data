@@ -6,15 +6,15 @@ export const useAssetsData = (projectName) => {
 
   React.useEffect(() => {
     console.log("Fetching project data");
-    fetch(`http://localhost:3000/data/${projectName}/assets.json`)
-      .then((rawData) => {
-        return rawData.json();
-      })
-      .then((json) => {
-        // console.log(json);
-        setData(json);
-      })
-      .catch((e) => console.error(e));
+    // fetch(`http://localhost:3000/data/${projectName}/assets.json`)
+    //   .then((rawData) => {
+    //     return rawData.json();
+    //   })
+    //   .then((json) => {
+    //     // console.log(json);
+    //     setData(json);
+    //   })
+    //   .catch((e) => console.error(e));
   }, [, projectName]);
 
   try {
