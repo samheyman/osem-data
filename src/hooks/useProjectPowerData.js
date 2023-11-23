@@ -5,11 +5,12 @@ import csvData from "../data/currentProjects.csv";
 // const csvUrl =
 //   "https://gist.github.com/samheyman/0c455176c95ff0c7675592f4f7ecb761";
 
-export const useCurrentActiveUsersData = () => {
+export const useProjectPowerData = () => {
   const [data, setData] = React.useState(null);
+
   React.useEffect(() => {
     const row = (d) => {
-      d.Users = +d["active users"];
+      d.Power = +d["mw"];
       return d;
     };
     csv(csvData, row).then((data) => {
@@ -18,7 +19,11 @@ export const useCurrentActiveUsersData = () => {
   }, []);
 
   try {
-    return data.sort((a, b) => b.Users - a.Users);
+    return (
+      data
+        // .filter((project) => (project.status === "active"))
+        .sort((a, b) => b.Power - a.Power)
+    );
   } catch (e) {
     // console.error(e);
   }

@@ -2,51 +2,53 @@ import React from "react";
 import { hierarchy, scaleBand, scaleLinear, max } from "d3";
 
 export const ProjectsAndCompanies = ({ data }) => {
-  const width = 800;
-  const height = 500;
-  const margin = { top: 20, right: 30, bottom: 100, left: 140 };
+  // console.log(data.companies);
+
+  const width = 1000;
+  const height = 1000;
+  const margin = { top: 20, right: 250, bottom: 100, left: 80 };
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
   const yValue = (d) => d.name;
-  const xValue = (d) => d.children;
+  const xValue = (d) => d;
 
   const yScale = scaleBand()
-    .domain(data.children.map(yValue))
+    .domain(data.companies.map(yValue))
     .range([0, innerHeight])
     .padding(0.4);
-  console.log(data.children);
-  const maxNumberOfValues = data.children.map(xValue).map((arr) => arr.length);
-  const xScale = scaleLinear().domain([0, 29]).range([0, innerWidth]);
+  // const maxNumberOfValues = data.companies.map(xValue).map((arr) => arr.length);
+  const xScale = scaleLinear().domain([0, 3000]).range([0, innerWidth]);
 
   const xAxisTickFormat = (tickValue) => tickValue;
-  console.log(maxNumberOfValues);
 
   return (
-    <svg width={width} height={height}>
+    <svg width={width} height={height} style={{ border: "1px solid grey" }}>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        {xScale.ticks().map((tickValue, id) => {
-          return (
-            <g
-              className="tick"
-              key={id}
-              transform={`translate(${xScale(tickValue)},0)`}
-            >
-              <line y2={innerHeight} stroke="black" />
-              <text
-                style={{ textAnchor: "middle" }}
-                dy=".71em"
-                y={innerHeight + 3}
+        <g transform={`translate(210)`}>
+          {xScale.ticks().map((tickValue, id) => {
+            return (
+              <g
+                className="tick"
+                key={id}
+                transform={`translate(${xScale(tickValue)},0)`}
               >
-                {xAxisTickFormat(tickValue)}
-              </text>
-            </g>
-          );
-        })}
+                <line y2={innerHeight} stroke="black" />
+                <text
+                  style={{ textAnchor: "middle" }}
+                  dy=".71em"
+                  y={innerHeight + 3}
+                >
+                  {xAxisTickFormat(tickValue)}
+                </text>
+              </g>
+            );
+          })}
+        </g>
         {yScale.domain().map((tickValue, id) => (
           <g className="tick" key={id}>
             <text
               style={{ textAnchor: "end" }}
-              x={-3}
+              x={200}
               dy=".32em"
               y={yScale(tickValue) + yScale.bandwidth() / 2}
             >
@@ -54,15 +56,14 @@ export const ProjectsAndCompanies = ({ data }) => {
             </text>
           </g>
         ))}
-        {data.children.map((d, id) => {
-          console.log(d);
+        {data.companies.map((d, id) => {
           return (
             <rect
               className="mark"
               key={id}
-              x={0}
+              x={210}
               y={yScale(yValue(d))}
-              width={xScale(xValue(d).length)}
+              width={xScale(xValue(d.size))}
               height={yScale.bandwidth()}
             >
               {/* <title>{xAxisTickFormat(xValue(d).n)}</title> */}

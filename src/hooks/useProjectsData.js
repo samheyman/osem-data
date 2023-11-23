@@ -1,6 +1,6 @@
 import React from "react";
 import { csv } from "d3";
-import csvData from "../data/projectsData.csv";
+import csvData from "../data/currentProjects.csv";
 
 const row = (d) => {
   d.lat = +d.lat;
@@ -23,7 +23,7 @@ export const useProjectsData = () => {
     });
   }, []);
   try {
-    return data.filter((project) => project.status === "active");
+    return data;
   } catch (e) {
     // console.error(e);
   }

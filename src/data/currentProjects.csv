@@ -1,0 +1,19 @@
+projectID,project name,type,lat,lng,status,active users,mw
+3,Wikinger,windfarm - O&M,54.8745,14.083667,archived,0,
+4,Gwynt y Mor,windfarm - O&M,53.49015,-3.600483,archived,0,576
+5,Scira,windfarm - O&M,,,archived,0,317
+9,Greater Gabbard,windfarm - O&M,51.9237,1.987433,active,497,504
+11,BOWL,windfarm - O&M,58.21145,-2.981217,active,852,588
+14,50Hz CWA2,other,0,0,active,3344,
+21,Akita,windfarm - O&M,39.753702,140.028703,active,123,140
+23,St Brieuc,windfarm - constr.,48.8235,-2.571434,active,3928,496
+24,Seagreen,windfarm - constr.,56.644979,-1.658597,active,7417,1075
+25,Stowen,other,0,0,active,59,
+27,Moray East,windfarm - O&M,58.075832,-2.869111,active,1135,950
+28,Dogger Bank A (constr.),windfarm - constr.,54.7405,1.743,active,5737,1200
+30,Moray West,windfarm - constr.,,,active,1530,882
+31,Dogger Bank B (constr.),windfarm - constr.,54.7405,1.743,active,4,1200
+33,Sofia,windfarm - constr.,,,active,1258,1400
+40,LID,windfarm - O&M,,,active,165,97
+42,Greater Wash Windfarms,windfarm - O&M,,,active,2,749
+43,Dogger Bank A (O&M),windfarm - O&M,54.7405,1.743,active,116,
