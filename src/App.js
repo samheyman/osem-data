@@ -9,12 +9,16 @@ import { useHistoricalUsersData } from "./hooks/useHistoricalUsersData";
 import { useWorldMapData } from "./hooks/useWorldMapData";
 import { Header } from "./Header";
 import { Marks } from "./Marks";
+import { Bars } from "./components/Bars";
 import { GeoMarks } from "./GeoMarks";
 import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
 import { AssetsMap } from "./AssetsMap";
 import { useProjectUsersData } from "./hooks/useProjectUsersData";
 import { useProjectPowerData } from "./hooks/useProjectPowerData";
+import { useUsersData } from "./hooks/useUsersData";
+import { HistogramChart } from "./components/HistogramChart";
+import { useResourcesData } from "./hooks/useResourcesData";
 
 const width = 960;
 const height = 430;
@@ -57,6 +61,8 @@ function App() {
   let currentActiveUsersData = useCurrentActiveUsersData(date);
   let worldMapData = useWorldMapData();
   let projectsData = useProjectsData();
+  let usersData = useUsersData();
+  let resourcesData = useResourcesData();
   let projectsLocationsData = useProjectsLocationsData();
   let historicalUsersData = useHistoricalUsersData("jul");
   let projectUsersData = useProjectUsersData();
@@ -80,7 +86,9 @@ function App() {
     !worldMapData ||
     !projectsData ||
     !projectsLocationsData ||
-    !historicalUsersData
+    !historicalUsersData ||
+    !usersData ||
+    !resourcesData
     // !assetsData ||
     // assetsData.value.length < 1
   ) {
@@ -101,12 +109,6 @@ function App() {
 
   const usersyValue = (d) => d["project name"];
   const usersxValue = (d) => d.Users;
-  const poweryValue = (d) => d["project name"];
-  const powerxValue = (d) => d.Power;
-  const siFormat = format(".2s");
-  // const xAxisTickFormat = (tickValue) => siFormat(tickValue).replace("G", "B");
-  const xAxisTickFormat = (tickValue) => tickValue;
-
   const usersyScale = scaleBand()
     .domain(projectUsersData.map(usersyValue))
     .range([0, innerHeight])
@@ -115,6 +117,12 @@ function App() {
   const usersxScale = scaleLinear()
     .domain([0, max(projectUsersData, usersxValue)])
     .range([0, innerWidth]);
+
+  const poweryValue = (d) => d["project name"];
+  const powerxValue = (d) => d.Power;
+  const siFormat = format(".2s");
+  // const xAxisTickFormat = (tickValue) => siFormat(tickValue).replace("G", "B");
+  const xAxisTickFormat = (tickValue) => tickValue;
 
   const poweryScale = scaleBand()
     .domain(projectPowerData.map(poweryValue))
@@ -155,6 +163,7 @@ function App() {
       <Header />
 
       <div className="App">
+        {/* <iframe src="https://vissim-my.sharepoint.com/:p:/g/personal/sam_heyman_vissim_no/EQqQk-N5CQ5NogUnXAk4NHkB4hRZlU2S60hes43by8Jc4Q?e=0I9LaJ"></iframe> */}
         <h1>OSEM data</h1>
         <p className="ff-heading fw-400">
           Based on copy of <span className="fw-700">production data</span>.
@@ -245,42 +254,145 @@ function App() {
             * Users on an active project who have not terminated their contract
           </span>
         </div>
-        <h2>Users by project</h2>
-        <div className="chart">
-          <svg width={width} height={height}>
-            <g transform={`translate(${margin.left},${margin.top})`}>
-              <AxisBottom
-                xScale={usersxScale}
-                innerHeight={innerHeight}
-                tickFormat={xAxisTickFormat}
-              />
-              <AxisLeft yScale={usersyScale} />
-              {/* <text
-                className="axis-label"
-                x={innerWidth / 2 - 50}
-                y={innerHeight + xAxisLabelOffset}
-                textAnchor="middle"
-              >
-                Number of users
-              </text>
-              <text
-                className="axis-label-note"
-                x={innerWidth / 2 - 50}
-                y={innerHeight + xAxisLabelOffset + 20}
-                textAnchor="middle"
-              >
-                Number of users by project, based on data from performance env.
-              </text> */}
-              <Marks
-                data={projectUsersData}
-                xScale={usersxScale}
-                yScale={usersyScale}
-                xValue={usersxValue}
-                yValue={usersyValue}
-                tooltipFormat={xAxisTickFormat}
-              />
-            </g>
-          </svg>
+        <h2>Projects by users</h2>
+        <div>
+          <HistogramChart
+            data={usersData}
+            value1="active_users"
+            value2="past_users"
+            value3="total_users"
+            value1Name="active users"
+            value2Name="past users"
+          />
+        </div>
+        <button
+          type="button"
+          class="collapsible"
+          onClick={() => {
+            const dataContent =
+              document.getElementsByClassName("usersRawData")[0];
+            if (dataContent.style.display === "block") {
+              dataContent.style.display = "none";
+            } else {
+              dataContent.style.display = "block";
+            }
+          }}
+        >
+          View raw data
+        </button>
+        <div className="usersRawData">
+          {usersData && (
+            <table className="capacity">
+              <thead>
+                <tr>
+                  <td style={{ textAlign: "left" }}>Project name</td>
+                  <td style={{ textAlign: "left" }}>Active users</td>
+                  <td style={{ textAlign: "left" }}>Past users</td>
+                  <td style={{ textAlign: "left" }}>Total users</td>
+                </tr>
+              </thead>
+              <tbody>
+                {usersData
+                  // .filter(
+                  //   (a, b) =>
+                  //     a.status === "active" && a.type === "windfarm - constr."
+                  // )
+                  // .sort((a, b) =>
+                  //   parseInt(a["active users"], 10) <
+                  //   parseInt(b["active users"], 10)
+                  //     ? 0
+                  //     : -1
+                  // )
+                  .map((d, id) => {
+                    // if (d.totalCapacityMW > 0) {
+                    return (
+                      <tr key={id}>
+                        <td style={{ textAlign: "left" }}>{d.Name}</td>
+                        <td style={{ textAlign: "left" }}>
+                          {d["active_users"]}
+                        </td>
+                        <td style={{ textAlign: "left" }}>{d["past_users"]}</td>
+                        <td style={{ textAlign: "left" }}>
+                          {d["total_users"]}
+                        </td>
+                      </tr>
+                    );
+                    // }
+                  })}
+              </tbody>
+            </table>
+          )}
+        </div>
+        <h2>Projects by resources</h2>
+        <div>
+          <HistogramChart
+            data={resourcesData}
+            value1="active_resources"
+            value2="inactive_resources"
+            value3="total_resources"
+            value1Name="active resources"
+            value2Name="inactive resources"
+          />
+        </div>
+        <button
+          type="button"
+          class="collapsible"
+          onClick={() => {
+            const dataContent =
+              document.getElementsByClassName("resourcesRawData")[0];
+            if (dataContent.style.display === "block") {
+              dataContent.style.display = "none";
+            } else {
+              dataContent.style.display = "block";
+            }
+          }}
+        >
+          View raw data
+        </button>
+        <div className="resourcesRawData">
+          {resourcesData && (
+            <table className="capacity">
+              <thead>
+                <tr>
+                  <td style={{ textAlign: "left" }}>Project name</td>
+                  <td style={{ textAlign: "left" }}>Active resources</td>
+                  <td style={{ textAlign: "left" }}>Inactive resources</td>
+                  <td style={{ textAlign: "left" }}>Total resources</td>
+                </tr>
+              </thead>
+              <tbody>
+                {resourcesData
+                  // .filter(
+                  //   (a, b) =>
+                  //     a.status === "active" && a.type === "windfarm - constr."
+                  // )
+                  // .sort((a, b) =>
+                  //   parseInt(a["active users"], 10) <
+                  //   parseInt(b["active users"], 10)
+                  //     ? 0
+                  //     : -1
+                  // )
+                  .map((d, id) => {
+                    // if (d.totalCapacityMW > 0) {
+                    return (
+                      <tr key={id}>
+                        <td style={{ textAlign: "left" }}>{d.Name}</td>
+                        <td style={{ textAlign: "left" }}>
+                          {d["active_resources"]}
+                        </td>
+                        <td style={{ textAlign: "left" }}>
+                          {d["inactive_resources"]}
+                        </td>
+                        <td style={{ textAlign: "left" }}>
+                          {d["total_resources"]}
+                        </td>
+                      </tr>
+                    );
+                    // }
+                  })}
+              </tbody>
+            </table>
+          )}
         </div>
         <h2>Project Power Capacity (MW) </h2>
         <div>
