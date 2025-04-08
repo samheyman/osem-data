@@ -29,8 +29,8 @@
 .App {
   text-align: center;
   border: 1px dotted grey;
-  width: 960px;
-  max-width: min(100%, 960px);
+  /* width: 1200px; */
+  /* max-width: min(100%, 960px); */
   margin: 0 auto 40px;
   /* overflow-x: auto; */
 }
@@ -216,9 +216,18 @@ pre {
   /* fill: rgb(239, 239, 239); */
   /* fill: #2786b4; */
   fill: transparent;
-  stroke: var(--clr-blue);
+  /* stroke: var(--clr-blue); */
   /* stroke: rgb(204, 204, 204); */
 }
+
+.construction {
+  stroke: red;
+}
+
+.operational {
+  stroke: #3da5ff;
+}
+
 .globe__sphere {
   fill: hsla(0, 0%, 93%, 0.01);
   /* fill: #ececec; */

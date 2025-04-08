@@ -1,6 +1,8 @@
 import { geoNaturalEarth1, geoPath, geoGraticule } from "d3";
 
-const projection = geoNaturalEarth1();
+const projection = geoNaturalEarth1()
+  .center([-20, 58]) // Center on Europe (longitude: 10, latitude: 50)
+  .scale(1800);
 const path = geoPath(projection);
 const graticule = geoGraticule();
 
@@ -17,16 +19,18 @@ export const GeoMarks = ({ data: { land, interiors }, projects }) => (
         return;
       }
       const [x, y] = projection([d.lng, d.lat]);
-
+      console.log(d.phase);
       return (
         <circle
-          key={id}
-          className="globe__projects"
+          key={`windfarm ${id}`}
+          className={`globe__projects ${
+            d.phase === "construction" ? "construction" : "operational"
+          }`}
           cx={x}
           cy={y}
-          r={d.totalCapacityMW / 200}
+          r={3}
         >
-          <title>{`${d.name}\n(${d.totalCapacityMW}MW)`}</title>
+          <title>{`${d.name}\n${d.mw} GW\n${d.turbines} turbines\n${d.phase}`}</title>
         </circle>
       );
     })}

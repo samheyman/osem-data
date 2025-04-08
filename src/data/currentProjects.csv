@@ -1,19 +1,21 @@
-projectID,project name,type,lat,lng,status,active users,mw
-3,Wikinger,windfarm - O&M,54.8745,14.083667,archived,0,
-4,Gwynt y Mor,windfarm - O&M,53.49015,-3.600483,archived,0,576
-5,Scira,windfarm - O&M,,,archived,0,317
-9,Greater Gabbard,windfarm - O&M,51.9237,1.987433,active,497,504
-11,BOWL,windfarm - O&M,58.21145,-2.981217,active,852,588
-14,50Hz CWA2,other,0,0,active,3344,
-21,Akita,windfarm - O&M,39.753702,140.028703,active,123,140
-23,St Brieuc,windfarm - constr.,48.8235,-2.571434,active,3928,496
-24,Seagreen,windfarm - constr.,56.644979,-1.658597,active,7417,1075
-25,Stowen,other,0,0,active,59,
-27,Moray East,windfarm - O&M,58.075832,-2.869111,active,1135,950
-28,Dogger Bank A (constr.),windfarm - constr.,54.7405,1.743,active,5737,1200
-30,Moray West,windfarm - constr.,,,active,1530,882
-31,Dogger Bank B (constr.),windfarm - constr.,54.7405,1.743,active,4,1200
-33,Sofia,windfarm - constr.,,,active,1258,1400
-40,LID,windfarm - O&M,,,active,165,97
-42,Greater Wash Windfarms,windfarm - O&M,,,active,2,749
-43,Dogger Bank A (O&M),windfarm - O&M,54.7405,1.743,active,116,
+name,lat,lng,phase,mw,turbines
+Baltic Eagle,54.82123,13.8,construction,0.476,50
+Baltic Power,54,9802,17.5655,construction,1.2,100
+Beatrice,58.21145,-2.981217,O&M,0.588,84
+Dogger Bank,54.7405,1.743,O&M,3.6,277
+East Anglia 1,52.155,2.46.17,O&M,0.714,102
+East Anglia 3,52.5366,2.763,construction,1.4,100
+He Dreiht,54.3589,6.1979,0.96,64
+Eoliennes Offshore du Calvados,49.4696,-0.5222,O&M,0.45,64
+Greater Gabbard,51.9237,1.987433,O&M,0.504,140
+Greater Wash (Dudgeon, Sheringham Shoal & Hywind),53.2439,1.3588,O&M,0.749,160
+Inch Cape,56.544979,-2.18597,construction,1.1,72
+Lynn & Inner Dowsing (LID),53.2129,0.4326,O&M,0.194,27
+Moray West,58.0319,-3.1601,construction,882,0.882,60
+Moray East,58.075832,-2.869111,construction,0.950,100
+Nordseecluster A,54.0484,7.0935,1.6,104
+Saint Brieuc,48.8235,-2.571434,construction,0.496,62
+Seagreen,56.644979,-1.658597,construction,1.075,114
+Sofia,54.995,2.2583,construction,1400,100
+Thor,56.3574,7.727,construction,1,72
+Wikinger,54.8745,14.083667,O&M,0.35,70
