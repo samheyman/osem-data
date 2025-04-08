@@ -6,10 +6,9 @@ const projection = geoNaturalEarth1()
 const path = geoPath(projection);
 const graticule = geoGraticule();
 
-export const GeoMarks = ({ data: { land, interiors }, projects }) => (
+export const GeoMarksEurope = ({ data: { land, interiors }, projects }) => (
   <g className="marks">
     <path className="globe__sphere" d={path({ type: "Sphere" })} />
-    <path className="globe__graticules" d={path(graticule())} />
     {land.features.map((feature, id) => (
       <path key={id} className="globe__land" d={path(feature)} />
     ))}

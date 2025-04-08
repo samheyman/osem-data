@@ -1,8 +1,8 @@
 name,lat,lng,phase,mw,turbines
 Baltic Eagle,54.82123,13.8,construction,0.476,50
-Baltic Power,54,9802,17.5655,construction,1.2,100
+Baltic Power,55.0513,17.6872,construction,1.2,100
 Beatrice,58.21145,-2.981217,O&M,0.588,84
-Dogger Bank,54.7405,1.743,O&M,3.6,277
+Dogger Bank,54.7405,1.743,construction,3.6,277
 East Anglia 1,52.155,2.46.17,O&M,0.714,102
 East Anglia 3,52.5366,2.763,construction,1.4,100
 He Dreiht,54.3589,6.1979,construction,0.96,64
@@ -19,3 +19,5 @@ Seagreen,56.644979,-1.658597,construction,1.075,114
 Sofia,54.995,2.2583,construction,1400,100
 Thor,56.3574,7.727,construction,1,72
 Wikinger,54.8745,14.083667,O&M,0.35,70
+Empire Wind 1,40.321,-73.405,construction,0.810,70
+Akita & Noshiro,39.753702,140.028703,O&M,0.139,33
