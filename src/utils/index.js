@@ -37,3 +37,26 @@ export function animateValue(id, start, end, duration, easing) {
 
   setTimeout(step, constant(duration, range, start));
 }
+
+export function parseCoordinate(coordinate) {
+  const regex = /(\d{1,3})°(\d{1,2}\.\d+)' ([EWNS])/;
+  const match = coordinate.match(regex);
+
+  if (!match) {
+    console.error("Invalid coordinate format:", coordinate);
+    throw new Error("Invalid coordinate format");
+  }
+
+  const degrees = parseInt(match[1], 10);
+  const minutes = parseFloat(match[2]);
+  const direction = match[3];
+
+  let decimal = degrees + minutes / 60;
+  if (direction === "W" || direction === "S") {
+    decimal = -decimal;
+  }
+  console.log("Coordinate: ", coordinate);
+
+  console.log("Decimal: ", decimal);
+  return decimal;
+}

@@ -219,6 +219,13 @@ pre {
   /* stroke: var(--clr-blue); */
   /* stroke: rgb(204, 204, 204); */
 }
+.globe__rigs {
+  /* fill: rgb(239, 239, 239); */
+  /* fill: #2786b4; */
+  fill: rgb(73, 71, 71);
+  /* stroke: var(--clr-blue); */
+  stroke: rgb(50, 124, 58);
+}
 
 .construction {
   stroke: red;
