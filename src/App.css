@@ -10,7 +10,24 @@
   --select-arrow: var(--select-border);
 
   --clr-blue: #2786b4;
+
+  /* Light mode colors */
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --land-color: #e0e0e0;
+  --ocean-color: #f0f0f0;
+  --border-color: #cccccc;
 }
+
+/* Dark mode colors */
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --land-color: #2d2d2d;
+  --ocean-color: #1a1a1a;
+  --border-color: #444444;
+}
+
 /* https://piccalil.li/blog/a-modern-css-reset */
 
 /* Box sizing rules */
@@ -28,11 +45,13 @@
 }
 .App {
   text-align: center;
-  border: 1px dotted grey;
+  border: 1px dotted var(--border-color);
   /* width: 1200px; */
   /* max-width: min(100%, 960px); */
   margin: 0 auto 40px;
   /* overflow-x: auto; */
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 @media (min-width: 960px) {
@@ -56,7 +75,7 @@ nav {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   color: white;
   padding: 5px 15px;
 }
@@ -81,6 +100,73 @@ nav a span {
   font-family: var(--ff-primary);
 }
 
+/* Dark mode toggle styles */
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-label {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -98,8 +184,9 @@ body {
   margin: 0;
   padding: 0;
   /* overflow: hidden; */
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: var(--ff-secondary);
-  color: rgb(33, 37, 41);
 }
 
 h1,
@@ -204,12 +291,15 @@ pre {
 .globe {
   margin: 0 auto;
   transform: translate(-195px, 143px) scale(1.8);
+  background-color: var(--ocean-color);
 }
 
 .globe__land {
   /* fill: rgb(239, 239, 239); */
-  fill: #e0e0e0;
+  fill: var(--land-color);
   /* fill: hsl(0, 0%, 71%, 0.61); */
+  stroke: var(--border-color);
+  stroke-width: 0.5;
   /* stroke: rgb(204, 204, 204); */
 }
 .globe__projects {
@@ -222,21 +312,31 @@ pre {
 .globe__rigs {
   /* fill: rgb(239, 239, 239); */
   /* fill: #2786b4; */
-  fill: rgb(73, 71, 71);
+  fill: transparent;
   /* stroke: var(--clr-blue); */
-  stroke: rgb(50, 124, 58);
+  stroke: rgb(142, 16, 151);
+}
+.globe__installations {
+  /* fill: rgb(239, 239, 239); */
+  /* fill: #2786b4; */
+  fill: transparent;
+  /* stroke: var(--clr-blue); */
+  stroke: rgb(199, 134, 14);
 }
 
 .construction {
-  stroke: red;
-}
-
-.operational {
   stroke: #3da5ff;
 }
 
+.operational {
+  stroke: rgb(0, 128, 0);
+}
+
 .globe__sphere {
-  fill: hsla(0, 0%, 93%, 0.01);
+  fill: var(--ocean-color);
+  stroke: var(--border-color);
+  stroke-width: 0.5;
+  /* fill: hsla(0, 0%, 93%, 0.01); */
   /* fill: #ececec; */
   /* fill: rgb(215, 215, 236); */
   /* stroke: red; */
@@ -244,11 +344,14 @@ pre {
 
 .globe__interiors {
   fill: none;
-  stroke: hsl(0, 0%, 80%);
+  stroke: var(--border-color);
+  stroke-width: 0.5;
 }
 .globe__graticules {
   fill: none;
-  stroke: hsl(0, 0%, 92%);
+  stroke: var(--border-color);
+  stroke-width: 0.5;
+  opacity: 0.5;
 }
 
 /* Utility classes */

@@ -1,6 +1,7 @@
 import { geoNaturalEarth1, geoPath, geoGraticule } from "d3";
 import { useRef, useEffect, useState } from "react";
 import { select, zoom, event } from "d3";
+import { useDarkMode } from "./contexts/DarkModeContext";
 
 const projection = geoNaturalEarth1()
   .center([-20, 56]) // Center on Europe (longitude: 10, latitude: 50)
@@ -8,9 +9,15 @@ const projection = geoNaturalEarth1()
 const path = geoPath(projection);
 const graticule = geoGraticule();
 
-export const GeoMarks = ({ data: { land, interiors }, projects, rigs }) => {
+export const GeoMarks = ({
+  data: { land, interiors },
+  projects,
+  rigs,
+  installations,
+}) => {
   const svgRef = useRef();
   const [zoomLevel, setZoomLevel] = useState(1);
+  const { darkMode } = useDarkMode();
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -21,6 +28,17 @@ export const GeoMarks = ({ data: { land, interiors }, projects, rigs }) => {
     console.log(zoomBehavior);
     svg.call(zoomBehavior);
   }, []);
+
+  // Apply dark mode class to the SVG
+  useEffect(() => {
+    const svg = select(svgRef.current);
+    if (darkMode) {
+      svg.classed("dark-mode", true);
+    } else {
+      svg.classed("dark-mode", false);
+    }
+  }, [darkMode]);
+
   return (
     <svg ref={svgRef} width="1800" height="1000" className="globe">
       <g className="marks">
@@ -81,9 +99,27 @@ export const GeoMarks = ({ data: { land, interiors }, projects, rigs }) => {
               cx={x}
               cy={y}
               r={5 / zoomLevel}
-              style={{ strokeWidth: 2 / zoomLevel }}
+              style={{ strokeWidth: 1 / zoomLevel }}
             >
               <title>{`${d.name}`}</title>
+            </circle>
+          );
+        })}
+        {installations.map((d, id) => {
+          if (d.lng === 0 || d.lat === 0) {
+            return;
+          }
+          const [x, y] = projection([d.lng, d.lat]);
+          return (
+            <circle
+              key={`rig ${id}`}
+              className={`globe__installations `}
+              cx={x}
+              cy={y}
+              r={5 / zoomLevel}
+              style={{ strokeWidth: 1 / zoomLevel }}
+            >
+              <title>{`${d.name}\n${d.description}`}</title>
             </circle>
           );
         })}
