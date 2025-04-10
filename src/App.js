@@ -40,7 +40,7 @@ const AppContent = () => {
               position: "relative",
               textAlign: "left",
               width: "200px",
-              top: "80px",
+              top: "30px",
               left: "20px",
               backgroundColor: darkMode ? "var(--land-color)" : "white",
               color: darkMode ? "var(--text-color)" : "black",
@@ -105,7 +105,7 @@ const AppContent = () => {
                   fill="none"
                 />
               </svg>
-              <span style={{ marginLeft: "10px" }}>Port</span>
+              <span style={{ marginLeft: "10px" }}>Oil rig</span>
             </div>
             <div
               style={{
@@ -119,12 +119,12 @@ const AppContent = () => {
                   cx="10"
                   cy="10"
                   r="8"
-                  stroke="purple"
+                  stroke="white"
                   strokeWidth="3"
                   fill="none"
                 />
               </svg>
-              <span style={{ marginLeft: "10px" }}>Oil rig</span>
+              <span style={{ marginLeft: "10px" }}>Port</span>
             </div>
             <div
               style={{
