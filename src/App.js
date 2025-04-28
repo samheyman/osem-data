@@ -25,6 +25,21 @@ const AppContent = () => {
   let installationsLocationData = useInstallationsLocationsData();
   const { darkMode } = useDarkMode();
 
+  const [visibleLayers, setVisibleLayers] = React.useState({
+    construction: true,
+    operations: true,
+    oilRig: true,
+    port: true,
+    other: true,
+  });
+
+  const toggleLayer = (layer) => {
+    setVisibleLayers((prev) => ({
+      ...prev,
+      [layer]: !prev[layer],
+    }));
+  };
+
   if (!worldMapData || !projectsLocationsData) {
     return <pre>... loading ...</pre>;
   }
@@ -57,32 +72,61 @@ const AppContent = () => {
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "5px",
+                cursor: "pointer",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
               }}
+              onClick={() => toggleLayer("construction")}
             >
-              <svg width="20" height="20">
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="8"
-                  stroke="#3da5ff"
-                  strokeWidth="3"
-                  fill="none"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>Construction</span>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <svg width="20" height="20">
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    stroke="#3da5ff"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>Construction</span>
+              </div>
+              <input
+                type="checkbox"
+                checked={visibleLayers.construction}
+                style={{ marginLeft: "10px" }}
+              />
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <svg width="20" height="20">
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="8"
-                  stroke="green"
-                  strokeWidth="3"
-                  fill="none"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>O&M</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+              onClick={() => toggleLayer("operations")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <svg width="20" height="20">
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    stroke="green"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>O&M</span>
+              </div>
+              <input
+                type="checkbox"
+                checked={visibleLayers.operations}
+                style={{ marginLeft: "10px" }}
+              />
             </div>
 
             <p style={{ fontWeight: "bold", padding: "10px 0" }}>
@@ -93,45 +137,70 @@ const AppContent = () => {
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "5px",
+                cursor: "pointer",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
               }}
+              onClick={() => toggleLayer("oilRig")}
             >
-              <svg width="20" height="20">
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="8"
-                  stroke="orange"
-                  strokeWidth="3"
-                  fill="none"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>Oil rig</span>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <svg width="20" height="20">
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    stroke="orange"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>Oil rig</span>
+              </div>
+              <input
+                type="checkbox"
+                checked={visibleLayers.oilRig}
+                style={{ marginLeft: "10px" }}
+              />
             </div>
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "5px",
+                cursor: "pointer",
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
               }}
+              onClick={() => toggleLayer("port")}
             >
-              <svg width="20" height="20">
-                <circle
-                  cx="10"
-                  cy="10"
-                  r="8"
-                  stroke="white"
-                  strokeWidth="3"
-                  fill="none"
-                />
-              </svg>
-              <span style={{ marginLeft: "10px" }}>Port</span>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <svg width="20" height="20">
+                  <circle
+                    cx="10"
+                    cy="10"
+                    r="8"
+                    stroke="white"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                </svg>
+                <span style={{ marginLeft: "10px" }}>Port</span>
+              </div>
+              <input
+                type="checkbox"
+                checked={visibleLayers.port}
+                style={{ marginLeft: "10px" }}
+              />
             </div>
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "5px",
               }}
+              onClick={() => toggleLayer("other")}
             >
               <svg width="20" height="20">
                 <circle
@@ -144,7 +213,7 @@ const AppContent = () => {
                 />
               </svg>
               <span style={{ marginLeft: "10px" }}>Other</span>
-            </div>
+            </div> */}
           </div>
           {worldMapData && worldMapData.land ? (
             <GeoMarks
@@ -152,6 +221,7 @@ const AppContent = () => {
               projects={projectsLocationsData}
               rigs={rigsLocationData}
               installations={installationsLocationData}
+              visibleLayers={visibleLayers}
             />
           ) : (
             <pre>Loading...</pre>
@@ -159,7 +229,7 @@ const AppContent = () => {
         </div>
 
         <p className="last-updated ff-heading fw-400">
-          LAST UPDATED APR 09, 2025
+          LAST UPDATED APR 28, 2025
         </p>
       </div>
     </>

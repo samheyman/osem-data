@@ -14,6 +14,7 @@ export const GeoMarks = ({
   projects,
   rigs,
   installations,
+  visibleLayers,
 }) => {
   const svgRef = useRef();
   const [zoomLevel, setZoomLevel] = useState(1);
@@ -25,12 +26,11 @@ export const GeoMarks = ({
       svg.select(".marks").attr("transform", event.transform);
       setZoomLevel(event.transform.k);
     });
-    console.log(zoomLevel);
     svg.call(zoomBehavior);
   }, []);
 
   useEffect(() => {
-    console.log(zoomLevel*10);
+    console.log(zoomLevel * 10);
   }, [zoomLevel]);
 
   // Apply dark mode class to the SVG
@@ -51,23 +51,22 @@ export const GeoMarks = ({
           <path key={id} className="globe__land" d={path(feature)} />
         ))}
         <path className="globe__interiors" d={path(interiors)} />
-        
+
         {projects.map((d, id) => {
-          if (d.lng === 0 || d.lat === 0) {
-            return;
-          }
+          if (d.lng === 0 || d.lat === 0) return null;
+          if (d.phase === "construction" && !visibleLayers.construction)
+            return null;
+          if (d.phase === "O&M" && !visibleLayers.operations) return null;
+
           const [x, y] = projection([d.lng, d.lat]);
           return (
             <g>
-              <path 
-              
-                transform={`translate(${x-4} ${y-7}) scale(${0.015})`}
-                fill={
-                  d.phase === "construction" ? "#3da5ff" : "#25b33f"
-                }
-                d="M272 16c-32 48-38.97 115.99-38 176 .118 7.3 2.486 17.54 5.086 26.69 5.166-2.36 10.89-3.69 16.914-3.69 3.04 0 6 .346 8.857.982L272 16zm-16 217c-12.81 0-23 10.19-23 23s10.19 23 23 23 23-10.19 23-23-10.19-23-23-23zm40.8 27.033c-.897 9.054-4.776 17.268-10.632 23.643L455.812 389.87c-25.57-51.714-80.964-91.744-133.42-120.91-6.366-3.54-16.386-6.605-25.593-8.927zm-79.896 8.274L40.124 362.12c57.57 3.714 119.937-24.243 171.423-55.09 6.274-3.758 13.95-10.936 20.58-17.77-7.1-5.122-12.522-12.447-15.223-20.953zm55.86 25.07c-5.127 2.32-10.8 3.623-16.764 3.623-5.964 0-11.637-1.302-16.764-3.62L232 496h48l-7.236-202.623z"/>
-     
-            
+              <path
+                transform={`translate(${x - 4} ${y - 7}) scale(${0.015})`}
+                fill={d.phase === "construction" ? "#3da5ff" : "#25b33f"}
+                d="M272 16c-32 48-38.97 115.99-38 176 .118 7.3 2.486 17.54 5.086 26.69 5.166-2.36 10.89-3.69 16.914-3.69 3.04 0 6 .346 8.857.982L272 16zm-16 217c-12.81 0-23 10.19-23 23s10.19 23 23 23 23-10.19 23-23-10.19-23-23-23zm40.8 27.033c-.897 9.054-4.776 17.268-10.632 23.643L455.812 389.87c-25.57-51.714-80.964-91.744-133.42-120.91-6.366-3.54-16.386-6.605-25.593-8.927zm-79.896 8.274L40.124 362.12c57.57 3.714 119.937-24.243 171.423-55.09 6.274-3.758 13.95-10.936 20.58-17.77-7.1-5.122-12.522-12.447-15.223-20.953zm55.86 25.07c-5.127 2.32-10.8 3.623-16.764 3.623-5.964 0-11.637-1.302-16.764-3.62L232 496h48l-7.236-202.623z"
+              />
+
               <text
                 x={x + 2}
                 y={y + 2}
@@ -75,31 +74,35 @@ export const GeoMarks = ({
                   fontFamily: "Source Sans Pro",
                   textTransform: "uppercase",
 
-                  fontSize: `${(40+zoomLevel*10) / (zoomLevel*10)}px`,
+                  fontSize: `${(40 + zoomLevel * 10) / (zoomLevel * 10)}px`,
                   fill: "var(--text-color)",
                 }}
               >
                 {d.name}
               </text>
-                
+
               <title>{`${d.name}\n${d.mw} GW\n${d.turbines} turbines\nIn ${d.phase}`}</title>
             </g>
           );
         })}
         {rigs.map((d, id) => {
-          if (d.lng === 0 || d.lat === 0) {
-            return;
-          }
+          if (d.lng === 0 || d.lat === 0) return null;
+          if (!visibleLayers.oilRig) return null;
           const [x, y] = projection([d.lng, d.lat]);
           return (
             <g>
               <g fill="#c7860e">
-	<path  transform={`translate(${x-1} ${y-4}) scale(${0.009})`}
-                 d="M307.5,272h-24c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5,7.5,7.5h24c4.142,0,7.5-3.358,7.5-7.5S311.642,272,307.5,272z"/>
-	<path  transform={`translate(${x-1} ${y-4}) scale(${0.009})`}
-                 d="M251.5,272h-24c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5,7.5,7.5h24c4.142,0,7.5-3.358,7.5-7.5S255.642,272,251.5,272z"/>
-	<path  transform={`translate(${x-1} ${y-4}) scale(${0.009})`}
-                 d="M427.5,192H411V71h16.5c2.841,0,5.438-1.605,6.708-4.146c1.271-2.541,0.997-5.582-0.708-7.854l-24-32
+                <path
+                  transform={`translate(${x - 1} ${y - 4}) scale(${0.009})`}
+                  d="M307.5,272h-24c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5,7.5,7.5h24c4.142,0,7.5-3.358,7.5-7.5S311.642,272,307.5,272z"
+                />
+                <path
+                  transform={`translate(${x - 1} ${y - 4}) scale(${0.009})`}
+                  d="M251.5,272h-24c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5,7.5,7.5h24c4.142,0,7.5-3.358,7.5-7.5S255.642,272,251.5,272z"
+                />
+                <path
+                  transform={`translate(${x - 1} ${y - 4}) scale(${0.009})`}
+                  d="M427.5,192H411V71h16.5c2.841,0,5.438-1.605,6.708-4.146c1.271-2.541,0.997-5.582-0.708-7.854l-24-32
 		c-1.417-1.889-3.639-3-6-3H293.266l-1.204-9.028C295.941,14.683,299,11.452,299,7.5c0-4.142-3.358-7.5-7.5-7.5h-48
 		c-4.142,0-7.5,3.358-7.5,7.5c0,3.952,3.059,7.183,6.938,7.472L212.934,240H195.5c-4.142,0-7.5,3.358-7.5,7.5V272h-10.192
 		l-29.402-169.06c3.714-0.448,6.593-3.605,6.593-7.44c0-4.142-3.358-7.5-7.5-7.5H147V63.5c0-4.142-3.358-7.5-7.5-7.5H131v-8.5
@@ -135,51 +138,57 @@ export const GeoMarks = ({
 		C276.547,446.655,273.859,448,267.637,448z M316,443.363c-3.824-1.732-8.737-3.363-16.388-3.363c-0.21,0-0.406,0.008-0.612,0.01
 		V383h17V443.363z M332,368h-49v-17h49V368z M364,336H43v-17h321V336z M332,304H203v-49h16.495c0.005,0,0.01,0.001,0.015,0.001
 		c0.007,0,0.014-0.001,0.021-0.001h95.939c0.007,0,0.014,0.001,0.021,0.001c0.005,0,0.01-0.001,0.015-0.001H332V304z M295.266,39
-		H399.75l12.75,17H297.533L295.266,39z M420,240h-33v-33h33V240z"/>
-</g>
-<text
+		H399.75l12.75,17H297.533L295.266,39z M420,240h-33v-33h33V240z"
+                />
+              </g>
+              <text
                 x={x + 2}
                 y={y + 2}
                 style={{
                   fontFamily: "Source Sans Pro",
                   textTransform: "uppercase",
 
-                  fontSize: `${(40+zoomLevel*10) / (zoomLevel*10)}px`,
-                  fill: "var(--text-color)"
+                  fontSize: `${(40 + zoomLevel * 10) / (zoomLevel * 10)}px`,
+                  fill: "var(--text-color)",
                 }}
               >
                 {d.name}
-              </text></g>
+              </text>
+            </g>
           );
         })}
         {installations.map((d, id) => {
-          if (d.lng === 0 || d.lat === 0) {
-            return;
-          }
+          if (d.lng === 0 || d.lat === 0) return null;
+          if (!visibleLayers.port) return null;
           const [x, y] = projection([d.lng, d.lat]);
           return (
-            <g><circle
-              key={`rig ${id}`}
-              className={`globe__installations `}
-              cx={x}
-              cy={y}
-              r={5 / zoomLevel}
-              style={{ strokeWidth: 1 / zoomLevel }}
-            >
-              <title>{`${d.name}\n${d.description}`}</title>
-            </circle>
-            <text
+            <g>
+              <circle
+                key={`rig ${id}`}
+                className={`globe__installations `}
+                cx={x}
+                cy={y}
+                r={5 / zoomLevel}
+                style={{
+                  strokeWidth: 1 / zoomLevel,
+                  fill: "var(--text-color)",
+                }}
+              >
+                <title>{`${d.name}\n${d.description}`}</title>
+              </circle>
+              <text
                 x={x + 4}
                 y={y + 4}
                 style={{
                   fontFamily: "Source Sans Pro",
                   textTransform: "uppercase",
-                  fontSize: `${(40+zoomLevel*10) / (zoomLevel*10)}px`,
-                  fill: "var(--text-color)"
+                  fontSize: `${(40 + zoomLevel * 10) / (zoomLevel * 10)}px`,
+                  fill: "var(--text-color)",
                 }}
               >
                 {d.name}
-              </text></g>
+              </text>
+            </g>
           );
         })}
       </g>
