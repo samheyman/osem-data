@@ -170,8 +170,8 @@ export const GeoMarks = ({
                 cy={y}
                 r={5 / zoomLevel}
                 style={{
-                  strokeWidth: 1 / zoomLevel,
-                  fill: "var(--text-color)",
+                  strokeWidth: 2 / zoomLevel,
+                  fill: "#800080",
                 }}
               >
                 <title>{`${d.name}\n${d.description}`}</title>

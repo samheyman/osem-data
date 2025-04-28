@@ -182,8 +182,8 @@ const AppContent = () => {
                     cy="10"
                     r="8"
                     stroke="white"
-                    strokeWidth="3"
-                    fill="none"
+                    strokeWidth="2"
+                    fill="#800080"
                   />
                 </svg>
                 <span style={{ marginLeft: "10px" }}>Port</span>
