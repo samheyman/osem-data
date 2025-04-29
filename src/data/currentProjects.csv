@@ -1,23 +1,27 @@
 name,longName,lat,lng,phase,mw,turbines
-Baltic Eagle,,54.82123,13.8,construction,0.476,50
-Baltic Power,,55.0513,17.6872,construction,1.2,100
-Beatrice,,58.21145,-2.981217,O&M,0.588,84
-Dogger Bank,,54.7405,1.743,construction,3.6,277
-East Anglia 1,,52.155,2.4617,O&M,0.714,102
-East Anglia 3,,52.5366,2.763,construction,1.4,100
-He Dreiht,,54.3589,6.1979,construction,0.96,64
-Eoliennes Offshore du Calvados,,49.4696,-0.5222,O&M,0.45,64
-Greater Gabbard,Greater Gabbard (Dudgeon | Sheringham Shoal | Hywind),51.9237,1.987433,O&M,0.504,140
-Greater Wash,,53.2439,1.3588,O&M,0.749,160
-Inch Cape,,56.544979,-2.18597,construction,1.1,72
+Baltic Eagle,Baltic Eagle,54.82123,13.8,construction,0.476,50
+Baltic Power,Baltic Power,55.0513,17.6872,construction,1.2,100
+Beatrice,Beatrice,58.21145,-2.981217,O&M,0.588,84
+DB A,"Dogger Bank A",54.7405,1.843,O&M,1.23,100
+DB B,"Dogger Bank B",55.1405,1.643,construction,1.23,100
+DB C,"Dogger Bank C",55.1405,2.743,construction,1.23,77
+East Anglia 1,East Anglia 1,52.455,2.4617,O&M,0.714,102
+East Anglia 3,East Anglia 3,52.8366,3.063,construction,1.4,100
+Empire Wind 1,Empire Wind 1,40.321,-73.405,construction,0.810,70
+He Dreiht,He Dreiht,54.3589,6.1979,construction,0.96,64
+EOC,Eoliennes Offshore du Calvados,49.4696,-0.5222,O&M,0.45,64
+Dudgeon,Greater Wash Windfarms (Dudgeon | Sheringham Shoal | Hywind),53.3439,1.6588,O&M,0.402,67
+Sheringham Shoal,Greater Wash Windfarms (Dudgeon | Sheringham Shoal | Hywind),53.1439,1.3188,O&M,0.317,88
+Hywind, Greater Wash Windfarms (Dudgeon | Sheringham Shoal | Hywind),57.444979,-1.458597,O&M,0.088,11
+Greater Gabbard,Greater Gabbard,52.155,1.8588,O&M,0.749,160
+Inch Cape,Inch Cape,56.544979,-2.18597,construction,1.1,72
 LID,Lynn and Inner Dowsing Wind Farms (LID),53.2129,0.4326,O&M,0.194,27
-Moray West,,58.0319,-3.1601,construction,882,0.882,60
-Moray East,,58.075832,-2.869111,construction,0.950,100
-Nordseecluster A,,54.0484,7.0935,construction,1.6,104
-Saint Brieuc,,48.8235,-2.571434,construction,0.496,62
-Seagreen,,56.644979,-1.658597,construction,1.075,114
-Sofia,,54.995,2.2583,construction,1400,100
-Thor,,56.3574,7.727,construction,1,72
-Wikinger,,54.8745,14.083667,O&M,0.35,70
-Empire Wind 1,,40.321,-73.405,construction,0.810,70
-Akita & Noshiro,,39.753702,140.028703,O&M,0.139,33
+Moray W,Moray East,58.0319,-3.1601,construction,882,0.882,60
+Moray E,Moray East,58.075832,-2.869111,construction,0.950,100
+Nordseecluster A,Nordseecluster A,54.0484,7.0935,construction,1.6,104
+Saint Brieuc,Saint Brieuc,48.8235,-2.571434,construction,0.496,62
+Seagreen,Seagreen,56.644979,-1.658597,construction,1.075,114
+Sofia,Sofia,54.995,2.2583,construction,1400,100
+Thor,Thor,56.3574,7.727,construction,1,72
+Wikinger,Wikinger,54.8745,14.083667,O&M,0.35,70
+Akita & Noshiro,Akita & Noshiro,39.753702,140.028703,O&M,0.139,33
