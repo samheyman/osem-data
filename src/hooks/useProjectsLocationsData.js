@@ -5,6 +5,7 @@ import csvData from "../data/currentProjects.csv";
 
 const row = (d) => {
   d.name = d.name;
+  d.longName = d.longName;
   d.lat = +d.lat;
   d.lng = +d.lng;
   d.phase = d.phase;

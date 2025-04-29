@@ -57,9 +57,9 @@ const AppContent = () => {
               width: "200px",
               top: "30px",
               left: "20px",
-              backgroundColor: darkMode ? "var(--land-color)" : "white",
+              backgroundColor: darkMode ? "#010d14" : "white",
               color: darkMode ? "var(--text-color)" : "black",
-              padding: "10px",
+              padding: "5px 20px 10px 20px",
               borderRadius: "5px",
               boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
               zIndex: 1000,
@@ -115,7 +115,7 @@ const AppContent = () => {
                     cx="10"
                     cy="10"
                     r="8"
-                    stroke="green"
+                    stroke="#10a52b"
                     strokeWidth="3"
                     fill="none"
                   />
@@ -181,9 +181,9 @@ const AppContent = () => {
                     cx="10"
                     cy="10"
                     r="8"
-                    stroke="white"
-                    strokeWidth="2"
-                    fill="#800080"
+                    stroke="#e800bc"
+                    strokeWidth="3"
+                    fill="none"
                   />
                 </svg>
                 <span style={{ marginLeft: "10px" }}>Port</span>
