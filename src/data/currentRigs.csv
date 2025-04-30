@@ -1,64 +1,64 @@
-Abbreviation,name,lat,lng
-AHA,Aasta Hansteen,67°04.011' N,007°05.735' E
-ALV,Alvheim,59°34.009' N,001°59.807' E
-ASA,Åsgard A,65°03.864' N,006°43.559' E
-ASB,Åsgard B,65°06.605' N,006°47.363' E
-ASC,Åsgard C,65°07.865' N,006°51.818' E
-ASL,Askeladden,61°03.274' N,002°04.400' E
-APT,Askepott,60°30.334' N,002°00.885' E
-BAF,Balder,59°11.461' N,002°23.143' E
-BRA,Brage,60°32.521' N,003°02.724' E
-CPR,COSL Promoter,58°38.744' N,001°38.476' E
-CPS,COSL Prospector,71°20.893' N,022°41.929' E
-DAB,Deepsea Aberdeen,59°15.825' N,002°37.350' E
-DSA,Deepsea Atlantic,64°39.898' N,006°51.924' E
-DSN,Deepsea Nordkapp,61°40.925' N,003°43.723' E
-DSS,Deepsea Stavanger,60°27.806' N,004°04.415' E
-DSY,Deepsea Yantai,63°03.231' N,005°03.922' E
-DRU,Draugen,64°21.191' N,007°46.872' E
-DRA,Draupner,58°11.299' N,002°28.264' E
-EGI,Edvard Grieg,58°50.540' N,002°14.803' E
-GKR,Gina Krog,58°34.294' N,001°41.712' E
-GJO,Gjøa,61°19.913' N,003°53.698' E
-GOL,Goliat,71°18.671' N,022°15.053' E
-GRA,Grane,59°09.863' N,002°29.174' E
-GUD,Gudrun,58°50.635' N,001°44.537' E
-GFA,Gullfaks A,61°10.532' N,002°11.220' E
-GFC,Gullfaks C,61°12.866' N,002°16.326' E
-HEI,Heidrun,65°19.534' N,007°18.941' E
-IVA,Ivar Aasen,58°55.293' N,002°11.801' E
-JCA,Johan Castberg,72°29.051' N,020°14.127' E
-JOS,Johan Sverdrup,58°50.122' N,002°33.125' E
-KRI,Kristin,64°59.643' N,006°33.025' E
-KVB,Kvitebjørn,61°04.794' N,002°29.884' E
-MRN,Mariner A,59°35.309' N,001°03.319' E
-MRB,Mariner B,59°36.494' N,001°04.586' E
-NJA,Njord A,64°16.241' N,007°12.040' E
-NJB,Njord B,64°16.306' N,007°15.065' E
-NIG,Noble Integrator,56°41.935' N,003°06.958' E
-NNE,Norne,66°01.619' N,008°05.192' E
-OSC,Oseberg C,60°36.466' N,002°46.426' E
-OSE,Oseberg Feltsenter,60°29.457' N,002°49.605' E
-OSO,Oseberg Øst,60°42.000' N,002°56.012' E
-OSS,Oseberg Sør,60°23.378' N,002°47.711' E
-RIN,Ringhorne,59°15.931' N,002°26.891' E
-SCO,Scarabeo 8,65°44.296' N,007°39.202' E
-SKV,Skarv,65°41.873' N,007°39.004' E
-SLE,Sleipner A,58°21.999' N,001°54.412' E
-SLB,Sleipner B,58°25.038' N,001°42.977' E
-SNB,Snorre B,61°31.460' N,002°12.619' E
-SNA,Snorre-A,61°26.934' N,002°08.490' E
-STA,Statfjord A,61°15.321' N,001°51.125' E
-STB,Statfjord B,61°12.370' N,001°49.739' E
-STC,Statfjord C,61°17.766' N,001°54.044' E
-TOS,Tranocean Spitsbergen,64°34.797' N,007°42.683' E
-ENA,Transocean Enabler,71°17.660' N,020°07.740' E
-ENC,Transocean Encourage,66°05.506' N,008°03.284' E
-TRO,Troll A,60°38.710' N,003°43.510' E
-TRB,Troll B,60°46.437' N,003°30.082' E
-TRC,Troll C,60°53.152' N,003°36.586' E
-ULA,Ula,57°06.668' N,002°50.744' E
-VMO,Valemoen,61°02.410' N,002°20.276' E
-VAL,Valhall,56°16.491' N,003°23.654' E
-VIS,Visund,61°22.164' N,002°27.441' E
-INS,Yme Inspirer,57°48.917' N,004°32.036' E
+Abbreviation,name,lat,lng,info
+AHA,Aasta Hansteen,67°04.011' N,007°05.735' E,
+ALV,Alvheim,59°34.009' N,001°59.807' E,
+ASA,Åsgard A,65°03.864' N,006°43.559' E,
+ASB,Åsgard B,65°06.605' N,006°47.363' E,
+ASC,Åsgard C,65°07.865' N,006°51.818' E,
+ASL,Askeladden,61°03.274' N,002°04.400' E,
+APT,Askepott,60°30.334' N,002°00.885' E,
+BAF,Balder,59°11.461' N,002°23.143' E,
+BRA,Brage,60°32.521' N,003°02.724' E,
+CPR,COSL Promoter,58°38.744' N,001°38.476' E,
+CPS,COSL Prospector,71°20.893' N,022°41.929' E,
+DAB,Deepsea Aberdeen,59°15.825' N,002°37.350' E,
+DSA,Deepsea Atlantic,64°39.898' N,006°51.924' E,
+DSN,Deepsea Nordkapp,61°40.925' N,003°43.723' E,
+DSS,Deepsea Stavanger,60°27.806' N,004°04.415' E,
+DSY,Deepsea Yantai,63°03.231' N,005°03.922' E,
+DRU,Draugen,64°21.191' N,007°46.872' E,
+DRA,Draupner,58°11.299' N,002°28.264' E,
+EGI,Edvard Grieg,58°50.540' N,002°14.803' E,
+GKR,Gina Krog,58°34.294' N,001°41.712' E,
+GJO,Gjøa,61°19.913' N,003°53.698' E,
+GOL,Goliat,71°18.671' N,022°15.053' E,
+GRA,Grane,59°09.863' N,002°29.174' E,
+GUD,Gudrun,58°50.635' N,001°44.537' E,
+GFA,Gullfaks A,61°10.532' N,002°11.220' E,
+GFC,Gullfaks C,61°12.866' N,002°16.326' E,
+HEI,Heidrun,65°19.534' N,007°18.941' E,
+IVA,Ivar Aasen,58°55.293' N,002°11.801' E,
+JCA,Johan Castberg,72°29.051' N,020°14.127' E,
+JOS,Johan Sverdrup,58°50.122' N,002°33.125' E,
+KRI,Kristin,64°59.643' N,006°33.025' E,
+KVB,Kvitebjørn,61°04.794' N,002°29.884' E,
+MRN,Mariner A,59°35.309' N,001°03.319' E,
+MRB,Mariner B,59°36.494' N,001°04.586' E,
+NJA,Njord A,64°16.241' N,007°12.040' E,
+NJB,Njord B,64°16.306' N,007°15.065' E,
+NIG,Noble Integrator,56°41.935' N,003°06.958' E,
+NNE,Norne,66°01.619' N,008°05.192' E,
+OSC,Oseberg C,60°36.466' N,002°46.426' E,
+OSE,Oseberg Feltsenter,60°29.457' N,002°49.605' E,
+OSO,Oseberg Øst,60°42.000' N,002°56.012' E,
+OSS,Oseberg Sør,60°23.378' N,002°47.711' E,
+RIN,Ringhorne,59°15.931' N,002°26.891' E,
+SCO,Scarabeo 8,65°44.296' N,007°39.202' E,
+SKV,Skarv,65°41.873' N,007°39.004' E,
+SLE,Sleipner A,58°21.999' N,001°54.412' E,
+SLB,Sleipner B,58°25.038' N,001°42.977' E,
+SNB,Snorre B,61°31.460' N,002°12.619' E,
+SNA,Snorre-A,61°26.934' N,002°08.490' E,
+STA,Statfjord A,61°15.321' N,001°51.125' E,
+STB,Statfjord B,61°12.370' N,001°49.739' E,
+STC,Statfjord C,61°17.766' N,001°54.044' E,
+TOS,Tranocean Spitsbergen,64°34.797' N,007°42.683' E,
+ENA,Transocean Enabler,71°17.660' N,020°07.740' E,
+ENC,Transocean Encourage,66°05.506' N,008°03.284' E,
+TRO,Troll A,60°38.710' N,003°43.510' E,
+TRB,Troll B,60°46.437' N,003°30.082' E,
+TRC,Troll C,60°53.152' N,003°36.586' E,
+ULA,Ula,57°06.668' N,002°50.744' E,
+VMO,Valemoen,61°02.410' N,002°20.276' E,
+VAL,Valhall,56°16.491' N,003°23.654' E,
+VIS,Visund,61°22.164' N,002°27.441' E,
+INS,Yme Inspirer,57°48.917' N,004°32.036' E,
