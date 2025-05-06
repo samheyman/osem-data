@@ -29,9 +29,9 @@ export const GeoMarks = ({
     svg.call(zoomBehavior);
   }, []);
 
-  useEffect(() => {
-    console.log(zoomLevel * 10);
-  }, [zoomLevel]);
+  // useEffect(() => {
+  //   console.log(zoomLevel * 10);
+  // }, [zoomLevel]);
 
   // Apply dark mode class to the SVG
   useEffect(() => {
