@@ -76,6 +76,7 @@ export const GeoMarks = ({
                 y={y + 1}
                 textAnchor="middle"
                 style={{
+                  cursor: "default",
                   fontFamily: "Source Sans Pro",
                   textTransform: "uppercase",
                   fontSize: `${(40 + zoomLevel * 10) / (zoomLevel * 10)}px`,
@@ -153,6 +154,7 @@ export const GeoMarks = ({
                 y={y + 1}
                 textAnchor="middle"
                 style={{
+                  cursor: "default",
                   fontFamily: "Source Sans Pro",
                   textTransform: "uppercase",
                   fontSize: `${(40 + zoomLevel * 10) / (zoomLevel * 10)}px`,
@@ -192,6 +194,7 @@ export const GeoMarks = ({
                 y={y + 7 / zoomLevel}
                 textAnchor="middle"
                 style={{
+                  cursor: "default",
                   fontFamily: "Source Sans Pro",
                   textTransform: "uppercase",
                   fontSize: `${(40 + zoomLevel * 10) / (zoomLevel * 10)}px`,
