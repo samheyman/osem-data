@@ -64,7 +64,7 @@ const Login = () => {
         <button type="submit" className="login-button">Login</button>
         
         <div className="request-access">
-          <p>Need access? <a href="mailto:sam.heyman@vissim.no?subject=Request%20Access%20to%20OSEM%20Data%20Dashboard">Email sam.heyman@vissim.no</a></p>
+          <p>Need access? Email <a href="mailto:sam.heyman@vissim.no?subject=Request%20Access%20to%20OSEM%20Data%20Dashboard"> request access</a></p>
         </div>
       </form>
     </div>
