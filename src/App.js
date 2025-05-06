@@ -11,6 +11,8 @@ import { useHistoricalUsersData } from "./hooks/useHistoricalUsersData";
 import { useWorldMapData } from "./hooks/useWorldMapData";
 import { Header } from "./Header";
 import { DarkModeProvider, useDarkMode } from "./contexts/DarkModeContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import { GeoMarks } from "./GeoMarks";
 
@@ -239,7 +241,11 @@ const AppContent = () => {
 function App() {
   return (
     <DarkModeProvider>
-      <AppContent />
+      <AuthProvider>
+        <ProtectedRoute>
+          <AppContent />
+        </ProtectedRoute>
+      </AuthProvider>
     </DarkModeProvider>
   );
 }
