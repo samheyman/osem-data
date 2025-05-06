@@ -84,6 +84,7 @@ export const GeoMarks = ({
                 }}
               >
                 {d.name}
+                <title>{`${d.longName}\n${d.mw} GW\n${d.turbines} turbines\nIn ${d.phase}`}</title>
               </text>
             </g>
           );
