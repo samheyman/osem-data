@@ -42,8 +42,8 @@ const AppContent = () => {
     }));
   };
 
-  if (!worldMapData || !projectsLocationsData) {
-    return <pre>... loading ...</pre>;
+  if (!worldMapData || !projectsLocationsData || !rigsLocationData || !installationsLocationData ) {
+    return <pre>... loading map ...</pre>;
   }
 
   return (
