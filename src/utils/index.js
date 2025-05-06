@@ -55,8 +55,8 @@ export function parseCoordinate(coordinate) {
   if (direction === "W" || direction === "S") {
     decimal = -decimal;
   }
-  console.log("Coordinate: ", coordinate);
+  // console.log("Coordinate: ", coordinate);
 
-  console.log("Decimal: ", decimal);
+  // console.log("Decimal: ", decimal);
   return decimal;
 }

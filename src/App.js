@@ -11,6 +11,8 @@ import { useHistoricalUsersData } from "./hooks/useHistoricalUsersData";
 import { useWorldMapData } from "./hooks/useWorldMapData";
 import { Header } from "./Header";
 import { DarkModeProvider, useDarkMode } from "./contexts/DarkModeContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import { GeoMarks } from "./GeoMarks";
 
@@ -40,8 +42,8 @@ const AppContent = () => {
     }));
   };
 
-  if (!worldMapData || !projectsLocationsData) {
-    return <pre>... loading ...</pre>;
+  if (!worldMapData || !projectsLocationsData || !rigsLocationData || !installationsLocationData ) {
+    return <pre>... loading map ...</pre>;
   }
 
   return (
@@ -239,7 +241,11 @@ const AppContent = () => {
 function App() {
   return (
     <DarkModeProvider>
-      <AppContent />
+      <AuthProvider>
+        <ProtectedRoute>
+          <AppContent />
+        </ProtectedRoute>
+      </AuthProvider>
     </DarkModeProvider>
   );
 }
