@@ -598,7 +598,7 @@ label {
   align-items: center;
   height: 100vh;
   background-color: var(--background-color, #001824);
-  color: var(--text-color, #ffffff);
+  color: var(#f0f0f0);
 }
 
 .login-form {
@@ -612,8 +612,8 @@ label {
 
 .login-form h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: var(--text-color, #ffffff);
+  margin: 1rem 0 1.5rem 0;
+  color: var(#f0f0f0);
 }
 
 .form-group {
@@ -632,7 +632,7 @@ label {
   border: 1px solid #2c3e50;
   border-radius: 4px;
   background-color: #0a1923;
-  color: var(--text-color, #ffffff);
+  color: var(#f0f0f0);
 }
 
 .login-button {
